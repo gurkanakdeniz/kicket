@@ -1,6 +1,18 @@
 #editor {
-  width: 80%;
+  width: 100%;
   height: 400px;
+  position: relative;
+}
+
+#reqBody {
+  width: 100%;
+  height: 300px;
+  position: relative;
+}
+
+#resBody {
+  width: 100%;
+  height: 300px;
   position: relative;
 }
 

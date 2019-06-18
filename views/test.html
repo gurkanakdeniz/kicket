@@ -3,6 +3,10 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>Title Goes Here</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Kanit&display=swap"
+      rel="stylesheet"
+    />
     <!-- Font Awesome -->
     <link
       rel="stylesheet"
@@ -23,29 +27,87 @@
       rel="stylesheet"
       type="text/css"
     />
+    <link href="../styles/css/switch.css" rel="stylesheet" type="text/css" />
+    <link href="../styles/css/accordion.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
     <div class="container">
       <div class="row">
         <div class="col-12 text-center">
-          <h1>Online Rest Api</h1>
+          <h2>Online Rest Api</h2>
         </div>
       </div>
-      <div class="row">
+      <div class="row mb-5">
         <div class="col-12">
           <div class="editorOut">
-            <div id="editor" class="z-depth-5">
+            <div id="editor" class="z-depth-3">
               function foo (items) { var x = "All this is syntax highlighted";
               return x; }
             </div>
           </div>
         </div>
       </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="accordion mb-5">
+            <div class="heading active">Request #1</div>
+            <div class="contents" style="display: block;">
+              <div class="row">
+                <div class="col-12">
+                  <label for="basic-url">Your vanity URL</label>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon3"
+                        >http://localhost:3000/</span
+                      >
+                    </div>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="basic-url"
+                      aria-describedby="basic-addon3"
+                      placeholder="user service hash"
+                    />
+                    <div class="input-group-append">
+                      <button
+                        class="btn btn-md btn-default m-0 px-3 py-2 z-depth-0 waves-effect"
+                        type="button"
+                        id="button-addon2"
+                      >
+                        POST
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h5>Request</h5>
+                  <div class="reqBodyOut">
+                    <div id="reqBody" class="z-depth-1">
+                      { "customVariable": "myVariable" }
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <h5>Response</h5>
+                  <div class="resBodyOut">
+                    <div id="resBody" class="z-depth-1">
+                      { "customVariable": "myVariable" }
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="accordion mb-5">
+            <div class="heading">Request #2</div>
+            <div class="contents"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.6.8/beautify.js"></script>
-  <script src="../styles/js/code-editor.js"></script>
   <!-- JQuery -->
   <script
     type="text/javascript"
@@ -66,4 +128,8 @@
     type="text/javascript"
     src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/js/mdb.min.js"
   ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.6.8/beautify.js"></script>
+  <script src="../styles/js/code-editor.js"></script>
+  <script src="../styles/js/accordion.js"></script>
 </html>
