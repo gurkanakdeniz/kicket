@@ -13,6 +13,7 @@ exports.createCode = function createCode(body) {
 
 exports.runCode = function createCode(uuid, body) {
   try {
+    // get uuid app name
     return axios.post(process.env.EXEC_API + "/run/" + uuid, body);
   } catch (error) {
     console.error(error);
