@@ -46,3 +46,47 @@ function formatCodeResponse() {
   var session = resEditor.getSession();
   session.setValue(js_beautify(session.getValue(), jsbOpts));
 }
+
+$(".nav-tabs")
+  .on("click", "a", function(e) {
+    e.preventDefault();
+    if (!$(this).hasClass("add-api")) {
+      $(this).tab("show");
+    }
+  })
+  .on("click", "span", function() {
+    var anchor = $(this).siblings("a");
+    $(anchor.attr("href")).remove();
+    $(this)
+      .parent()
+      .remove();
+    $(".nav-tabs li")
+      .children("a")
+      .first()
+      .click();
+  });
+
+$(".add-api").click(function(e) {
+  /* e.preventDefault();
+  var id = $(".nav-tabs").children().length; //think about it ;)
+  var tabId = "api_" + id;
+  $(this)
+    .closest("li")
+    .before(
+      '<li class="nav-item waves-effect waves-light"><a class="nav-link" id="api-' +
+        id +
+        '-tab" data-toggle="tab" href="#api_' +
+        id +
+        '"role="tab">Request #' +
+        id +
+        "</a></li>"
+    );
+  $(".tab-content").append(
+    '<div class="tab-pane" id="' +
+      tabId +
+      '">Contact Form: New Contact ' +
+      id +
+      "</div>"
+  );
+  $(".nav-tabs li:nth-child(" + id + ") a").click(); */
+});

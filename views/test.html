@@ -29,21 +29,73 @@
     />
     <link href="../styles/css/switch.css" rel="stylesheet" type="text/css" />
     <link href="../styles/css/accordion.css" rel="stylesheet" type="text/css" />
+    <link href="../styles/css/custom.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <div class="container">
+    <div class="container mt-5">
+      <div class="row mb-5">
+        <div class="col-12">
+          <h2><i class="fas fa-code mr-3"></i>Write Code</h2>
+        </div>
+      </div>
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            id="api-1-tab"
+            data-toggle="tab"
+            href="#api_1"
+            role="tab"
+            aria-controls="api_1"
+            aria-selected="true"
+            >Request #1</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link add-api"
+            id="add-api"
+            data-toggle="tab"
+            href="#"
+            role="tab"
+            aria-controls="add-api"
+            aria-selected="false"
+            style="pointer-events: none"
+            >Add API</a
+          >
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div
+          class="tab-pane fade show active"
+          id="api_1"
+          role="tabpanel"
+          aria-labelledby="api-1-tab"
+        >
+          <div class="editorOut" style="padding: 10px 0 10px 0;">
+            <div id="editor" class="z-depth-3">
+              exports.uuid = (req, res, next) => { const result = { id: 1, name:
+              "rest create service" } return result; }
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="row">
-        <div class="col-12 text-center">
-          <h2>Online Rest Api</h2>
+        <div class="col-12">
+          <button
+            id="submitApi"
+            type="button"
+            class="btn btn-primary btn-lg btn-block mb-5"
+            style="border-radius: 10px;"
+          >
+            Deploy Rest API
+          </button>
         </div>
       </div>
       <div class="row mb-5">
         <div class="col-12">
-          <div class="editorOut">
-            <div id="editor" class="z-depth-3">
-              function foo (items) { var x = "All this is syntax highlighted";
-              return x; }
-            </div>
+          <div class="float-right">
+            <h2>Test Rest API<i class="fas fa-cog fa-spin ml-3"></i></h2>
           </div>
         </div>
       </div>
@@ -54,11 +106,11 @@
             <div class="contents" style="display: block;">
               <div class="row">
                 <div class="col-12">
-                  <label for="basic-url">Your vanity URL</label>
+                  <label for="basic-url">Rest Endpoint</label>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
                       <span class="input-group-text" id="basic-addon3"
-                        >http://localhost:3000/</span
+                        >no define</span
                       >
                     </div>
                     <input
@@ -66,13 +118,14 @@
                       class="form-control"
                       id="basic-url"
                       aria-describedby="basic-addon3"
-                      placeholder="user service hash"
+                      placeholder="EfQSFUEuyMiKqWzuvpzulKhgHWFRSeOT"
                     />
                     <div class="input-group-append">
                       <button
-                        class="btn btn-md btn-default m-0 px-3 py-2 z-depth-0 waves-effect"
+                        class="btn btn-md btn-primary m-0 px-3 py-2 z-depth-0 waves-effect"
                         type="button"
-                        id="button-addon2"
+                        id="sendReq"
+                        style="border-top-right-radius: 10px; border-bottom-right-radius: 10px;"
                       >
                         POST
                       </button>
@@ -99,10 +152,6 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div class="accordion mb-5">
-            <div class="heading">Request #2</div>
-            <div class="contents"></div>
           </div>
         </div>
       </div>
@@ -132,4 +181,5 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.6.8/beautify.js"></script>
   <script src="../styles/js/code-editor.js"></script>
   <script src="../styles/js/accordion.js"></script>
+  <script src="../styles/js/submit-api.js"></script>
 </html>
