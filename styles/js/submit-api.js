@@ -1,9 +1,13 @@
 $("#submitApi").click(function() {
+  var body = {
+    platform: currentPlatform(),
+    code: editor.getValue()
+  };
   $.ajax({
-    url: "/api/create",
+    url: currentPath() + "/api/create",
     type: "POST",
-    contentType: "text/plain",
-    data: editor.getValue(),
+    contentType: "application/json",
+    data: JSON.stringify(body),
     success: function(data) {
       console.log(data);
       $("#basic-url").val(data.endpoint);
@@ -13,7 +17,7 @@ $("#submitApi").click(function() {
 
 $("#sendReq").click(function() {
   $.ajax({
-    url: "/api/run/" + $("#basic-url").val(),
+    url: currentPath() + "/api/run/" + $("#basic-url").val(),
     type: "POST",
     contentType: "application/json",
     data: reqEditor.getValue(),
@@ -24,6 +28,20 @@ $("#sendReq").click(function() {
   });
 });
 
-$("#basic-addon3").text(
-  "http://localhost:3003/rest/" /* window.location.href */
-);
+function getExample() {
+  var body = {
+    platform: currentPlatform()
+  };
+  $.ajax({
+    url: currentPath() + "/api/example/",
+    type: "POST",
+    contentType: "application/json",
+    data: JSON.stringify(body),
+    success: function(data) {
+      editor.setValue(JSON.stringify(data));
+      formatCodeResponse();
+    }
+  });
+}
+
+$("#basic-addon3").text("" + currentPath() + "/api/");

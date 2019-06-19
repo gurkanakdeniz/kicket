@@ -1,42 +1,73 @@
 const axios = require("axios");
-const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config();
 
-const restApiModel = require("../models/rest.api.model");
+const dbService = require("./db.service");
 
 exports.createCode = async function createCode(body, requestIp) {
   try {
-    let response = await axios.post(process.env.NODE_API, body, {
-      headers: { "Content-Type": "text/plain" }
-    });
-    if (response.data.endpoint !== null) {
-      const newApi = new restApiModel({
-        _id: new mongoose.Types.ObjectId(),
-        url: response.data.endpoint,
-        platform: response.data.platform,
-        creator: requestIp,
-        created_date: new Date(),
-        whitelist: ""
+    let response = null;
+    // console.log(JSON.stringify(body));
+    // console.log(body.platform);
+    if (body.platform === "java") {
+      response = await axios.post(process.env.JAVA_API, body.code, {
+        headers: { "Content-Type": "text/plain" }
       });
-      await newApi.save();
+    } else if (body.platform === "node") {
+      response = await axios.post(process.env.NODE_API, body.code, {
+        headers: { "Content-Type": "text/plain" }
+      });
+    } else if (body.platform === "python") {
+      response = await axios.post(process.env.PYTHON_API, body.code, {
+        headers: { "Content-Type": "text/plain" }
+      });
+    }
+
+    if (response) {
+      if (response.data.endpoint !== null) {
+        await dbService.insertModel(
+          response.data.endpoint,
+          response.data.platform,
+          requestIp
+        );
+      }
     }
     return response;
-  } catch (error) {
-    console.error(error);
+  } catch (e) {
+    console.error(e);
+    throw e;
   }
 };
 
 exports.runCode = async function createCode(uuid, body) {
   try {
-    const result = await restApiModel.findOne({ url: uuid });
-    if (result.platform === "node") {
-      return axios.post(process.env.NODE_API + "/rest/" + uuid, body, {
-        headers: { "Content-Type": "application/json" }
-      });
+    const result = await dbService.findUUID(uuid);
+    console.log(result);
+    if (result) {
+      if (result.platform === "node") {
+        return axios.post(process.env.NODE_API + "/rest/" + uuid, body, {
+          headers: { "Content-Type": "application/json" }
+        });
+      } else if (result.platform === "java") {
+        return axios.post(process.env.JAVA_API + "/run/" + uuid, body);
+      } else if (result.platform === "python") {
+        return axios.post(process.env.PYTHON_API + "/run/" + uuid, body);
+      }
     }
-    return axios.post(process.env.EXEC_API + "/run/" + uuid, body);
-  } catch (error) {
-    console.error(error);
+    return "error-api";
+  } catch (e) {
+    console.error(e);
+    throw e;
+  }
+};
+
+exports.exampleCode = async function exampleCode(body) {
+  try {
+    console.log("--- example -- " + body.platform);
+    //TODO
+    return "error-api";
+  } catch (e) {
+    console.error(e);
+    throw e;
   }
 };
