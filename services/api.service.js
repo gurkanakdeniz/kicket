@@ -10,7 +10,7 @@ exports.createCode = async function createCode(body, requestIp) {
     // console.log(JSON.stringify(body));
     // console.log(body.platform);
     if (body.platform === "java") {
-      response = await axios.post(process.env.JAVA_API, body.code, {
+      response = await axios.post(process.env.JAVA_API + "/create", body.code, {
         headers: { "Content-Type": "text/plain" }
       });
     } else if (body.platform === "node") {
@@ -18,9 +18,13 @@ exports.createCode = async function createCode(body, requestIp) {
         headers: { "Content-Type": "text/plain" }
       });
     } else if (body.platform === "python") {
-      response = await axios.post(process.env.PYTHON_API, body.code, {
-        headers: { "Content-Type": "text/plain" }
-      });
+      response = await axios.post(
+        process.env.PYTHON_API + "/create",
+        body.code,
+        {
+          headers: { "Content-Type": "text/plain" }
+        }
+      );
     }
 
     if (response) {
