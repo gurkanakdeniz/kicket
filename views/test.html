@@ -79,10 +79,18 @@
               <div class="wrapper">
                 <nav class="tabs">
                   <div class="selector"></div>
-                  <a href="#" class="active"><i class="fab fa-java"></i>Java</a>
-                  <a href="#"><i class="fab fa-js"></i>Node JS</a>
-                  <a href="#"><i class="fab fa-python"></i>Python</a>
-                  <a href="#"><i class="fab fa-php"></i>PHP</a>
+                  <div id="platform">
+                    <a href="#" class="active" value="java"
+                      ><i class="fab fa-java"></i>Java</a
+                    >
+                    <a href="#" value="node"
+                      ><i class="fab fa-js"></i>Node JS</a
+                    >
+                    <a href="#" value="python"
+                      ><i class="fab fa-python"></i>Python</a
+                    >
+                    <a href="#" value="php"><i class="fab fa-php"></i>PHP</a>
+                  </div>
                 </nav>
               </div>
             </div>
@@ -194,6 +202,7 @@
   ></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.6.8/beautify.js"></script>
+  <script src="../styles/js/common.js"></script>
   <script src="../styles/js/code-editor.js"></script>
   <script src="../styles/js/accordion.js"></script>
   <script src="../styles/js/submit-api.js"></script>
