@@ -9,7 +9,7 @@ $("#submitApi").click(function() {
     contentType: "application/json",
     data: JSON.stringify(body),
     success: function(data) {
-      console.log(data);
+      // console.log(data);
       $("#basic-url").val(data.endpoint);
     }
   });

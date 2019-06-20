@@ -1,12 +1,12 @@
 .accordion {
   background: linear-gradient(to bottom right, #fff, #f7f7f7);
-  background: #3f729b;
+  background: #4285f4 !important;
   margin: 0 auto;
   border-radius: 7px;
 }
 .accordion:hover {
-  box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.2),
-    0 40px 77px 0 rgba(0, 0, 0, 0.22) !important;
+  /* box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.2),
+    0 40px 77px 0 rgba(0, 0, 0, 0.22) !important; */
   transition: box-shadow 0.3s ease-in-out;
 }
 
@@ -22,8 +22,9 @@
   border-bottom: 0;
 }
 .heading:hover {
-  background: #1c2331;
-  border-radius: 7px !important;
+  background: #0d47a1;
+  border-top-left-radius: 7px !important;
+  border-top-right-radius: 7px !important;
 }
 .heading:first-child:hover {
   /* border-radius: 3px 3px 0 0; */
@@ -51,9 +52,9 @@
 }
 .contents {
   display: none;
-  background: #fffafa;
+  background: #d8e4e6;
   padding: 15px;
-  color: #7f8fa4;
-  font-size: 13px;
+  color: #1f515d;
+  font-size: 14px;
   line-height: 1.5;
 }

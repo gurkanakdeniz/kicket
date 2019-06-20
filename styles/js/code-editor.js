@@ -1,3 +1,9 @@
+function setEditorTheme(tname) {
+  editor.setTheme("ace/theme/" + tname);
+}
+function setEditorLanguage(lname) {
+  editor.getSession().setMode("ace/mode/" + lname);
+}
 var editor = ace.edit("editor");
 editor.setShowPrintMargin(false);
 editor.setTheme("ace/theme/monokai");
