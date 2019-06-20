@@ -1,27 +1,56 @@
 // setTimeout(activeTab, 2000);
 $("#editorSettings").click(function() {
-  activeTab();
+  activeTabLanguage();
+  activeTabTheme();
 });
 
-function activeTab() {
-  var tabs = $(".tabs");
-  var selector = $(".tabs").find("a").length;
+function activeTabLanguage() {
+  var tabs = $("#pl .tabs");
+  var selector = $("#pl .tabs").find("a").length;
   var activeItem = tabs.find(".active");
   var activeWidth = activeItem.innerWidth();
-  $(".selector").css({
+  $("#pl .selector").css({
     left: activeItem.position.left + "px",
     width: activeWidth + "px"
   });
 }
 
-$(".tabs").on("click", "a", function(e) {
+function activeTabTheme() {
+  var tabs = $("#theme .tabs");
+  var selector = $("#theme .tabs").find("a").length;
+  var activeItem = tabs.find(".active");
+  var activeWidth = activeItem.innerWidth();
+  $("#theme .selector").css({
+    left: activeItem.position.left + "px",
+    width: activeWidth + "px"
+  });
+}
+
+$("#theme .tabs").on("click", "a", function(e) {
   e.preventDefault();
-  $(".tabs a").removeClass("active");
+  $("#theme .tabs a").removeClass("active");
   $(this).addClass("active");
   var activeWidth = $(this).innerWidth();
   var itemPos = $(this).position();
-  $(".selector").css({
+  $("#theme .selector").css({
     left: itemPos.left + "px",
     width: activeWidth + "px"
   });
+  setEditorTheme(currentTheme());
+});
+
+$("#pl .tabs").on("click", "a", function(e) {
+  e.preventDefault();
+  $("#pl .tabs a").removeClass("active");
+  $(this).addClass("active");
+  var activeWidth = $(this).innerWidth();
+  var itemPos = $(this).position();
+  $("#pl .selector").css({
+    left: itemPos.left + "px",
+    width: activeWidth + "px"
+  });
+
+  setEditorLanguage(
+    currentPlatform() === "node" ? "javascript" : currentPlatform()
+  );
 });

@@ -12,3 +12,9 @@ function currentPlatform() {
     .find(".active")
     .attr("value");
 }
+
+function currentTheme() {
+  return $("#theme")
+    .find(".active")
+    .attr("value");
+}

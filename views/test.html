@@ -73,25 +73,64 @@
           role="tabpanel"
           aria-labelledby="api-1-tab"
         >
-          <div id="editorSettings" class="accordion mt-1 mb-1">
+          <div id="editorSettings" class="accordion mt-2 mb-3">
             <div class="heading" style="padding: 10px;">Editor Settings</div>
             <div class="contents">
-              <div class="wrapper">
-                <nav class="tabs">
-                  <div class="selector"></div>
-                  <div id="platform">
-                    <a href="#" class="active" value="java"
-                      ><i class="fab fa-java"></i>Java</a
-                    >
-                    <a href="#" value="node"
-                      ><i class="fab fa-js"></i>Node JS</a
-                    >
-                    <a href="#" value="python"
-                      ><i class="fab fa-python"></i>Python</a
-                    >
-                    <a href="#" value="php"><i class="fab fa-php"></i>PHP</a>
+              <div class="row">
+                <div class="col-6">
+                  <div class="row">
+                    <div class="col-12">
+                      <h5>Editor Language</h5>
+                    </div>
                   </div>
-                </nav>
+                  <div class="row">
+                    <div class="col-12">
+                      <div id="pl" class="wrapper">
+                        <nav class="tabs">
+                          <div class="selector"></div>
+                          <div id="platform">
+                            <a href="#" class="active" value="node"
+                              ><i class="fab fa-js"></i>Node JS</a
+                            >
+                            <a href="#" value="java"
+                              ><i class="fab fa-java"></i>Java</a
+                            >
+                            <a href="#" value="python"
+                              ><i class="fab fa-python"></i>Python</a
+                            >
+                            <a href="#" value="php"
+                              ><i class="fab fa-php"></i>PHP</a
+                            >
+                          </div>
+                        </nav>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="row">
+                    <div class="col-12">
+                      <h5>Editor Theme</h5>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12">
+                      <div id="theme" class="wrapper">
+                        <nav class="tabs">
+                          <div class="selector"></div>
+                          <div id="theme">
+                            <a href="#" class="active" value="monokai"
+                              ><i class="fas fa-moon"></i>Monokai</a
+                            >
+                            <a href="#" value="eclipse"
+                              ><i class="fas fa-sun"></i>Eclipse</a
+                            >
+                          </div>
+                        </nav>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -104,21 +143,37 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-12">
+        <div class="col-6">
           <button
             id="submitApi"
             type="button"
-            class="btn btn-primary btn-lg btn-block mb-5"
-            style="border-radius: 10px;"
+            class="btn btn-outline-primary btn-lg btn-block mb-5"
+            style="border-radius: 10px; color: #d8e4e6 !important;"
           >
-            Deploy Rest API
+            <p class="animated fadeInDown m-0">Deploy API</p>
+            <p class="hov-icon animated fadeInUp m-0">
+              <i class="fas fa-cloud-upload-alt" style="font-size: 22px;"></i>
+            </p>
+          </button>
+        </div>
+        <div class="col-6">
+          <button
+            id="updateApi"
+            type="button"
+            class="btn btn-outline-default btn-lg btn-block mb-5"
+            style="border-radius: 10px; color: #d8e4e6 !important;"
+          >
+            <p class="animated fadeInDown m-0">Update API</p>
+            <p class="hov-icon animated fadeInUp m-0">
+              <i class="fas fa-sync-alt" style="font-size: 22px;"></i>
+            </p>
           </button>
         </div>
       </div>
       <div class="row mb-5">
         <div class="col-12">
           <div class="float-right">
-            <h2>Test Rest API<i class="fas fa-cog fa-spin ml-3"></i></h2>
+            <h2>Test API<i class="fas fa-cog fa-spin ml-3"></i></h2>
           </div>
         </div>
       </div>
@@ -145,10 +200,10 @@
                     />
                     <div class="input-group-append">
                       <button
-                        class="btn btn-md btn-primary m-0 px-3 py-2 z-depth-0 waves-effect"
+                        class="btn btn-md btn-outline-primary m-0 px-3 py-2 z-depth-0 waves-effect"
                         type="button"
                         id="sendReq"
-                        style="border-top-right-radius: 10px; border-bottom-right-radius: 10px;"
+                        style="border-top-right-radius: 10px; border-bottom-right-radius: 10px; background: #fff !important;"
                       >
                         POST
                       </button>

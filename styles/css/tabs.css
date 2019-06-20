@@ -1,15 +1,18 @@
 .wrapper {
   text-align: center;
   margin: auto;
+  padding: 5px;
+  background: #fff;
+  border-radius: 10px;
 }
 
 .tabs {
   padding: 0px;
   list-style: none;
   background: #fff;
-  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1); */
   display: inline-block;
-  border-radius: 50px;
+  border-radius: 10px;
   position: relative;
 }
 
@@ -22,6 +25,8 @@
   position: relative;
   z-index: 1;
   transition-duration: 0.6s;
+  background-color: #4285f41c !important;
+  border-radius: 10px;
 }
 
 .tabs a.active {
@@ -39,7 +44,7 @@
   left: 0px;
   top: 0px;
   z-index: 1;
-  border-radius: 50px;
+  border-radius: 10px;
   transition-duration: 0.6s;
   transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 

@@ -9,12 +9,9 @@ const logger = require("morgan");
 const dotenv = require("dotenv");
 dotenv.config();
 
-mongoose.connect(
-  process.env.MONGO,
-  {
-    useNewUrlParser: true
-  }
-);
+mongoose.connect(process.env.MONGO, {
+  useNewUrlParser: true
+});
 
 const indexRouter = require("./routes/index");
 const apiRouter = require("./routes/api");
@@ -22,7 +19,6 @@ const apiRouter = require("./routes/api");
 // app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(bodyParser.text());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname)));
 

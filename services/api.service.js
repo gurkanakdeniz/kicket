@@ -46,7 +46,7 @@ exports.createCode = async function createCode(body, requestIp) {
 exports.runCode = async function createCode(uuid, body) {
   try {
     const result = await dbService.findUUID(uuid);
-    console.log(result);
+    // console.log(result);
     if (result) {
       if (result.platform === "node") {
         return axios.post(process.env.NODE_API + "/rest/" + uuid, body, {
