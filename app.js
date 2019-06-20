@@ -1,23 +1,30 @@
-var createError = require("http-errors");
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
+const createError = require("http-errors");
+const express = require("express");
+const app = express();
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
+const dotenv = require("dotenv");
+dotenv.config();
 
-var indexRouter = require("./routes/index");
-var apiRouter = require("./routes/api");
+mongoose.connect(
+  process.env.MONGO,
+  {
+    useNewUrlParser: true
+  }
+);
 
-var app = express();
+const indexRouter = require("./routes/index");
+const apiRouter = require("./routes/api");
 
-// view engine setup
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "jade");
-
-app.use(logger("dev"));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+// app.use(logger("dev"));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.text());
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname)));
 
 app.use("/", indexRouter);
 app.use("/api", apiRouter);

@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Title Goes Here</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Kanit&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    />
+    <!-- Bootstrap core CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Material Design Bootstrap -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/css/mdb.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="../styles/css/code-editor.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link href="../styles/css/switch.css" rel="stylesheet" type="text/css" />
+    <link href="../styles/css/accordion.css" rel="stylesheet" type="text/css" />
+    <link href="../styles/css/custom.css" rel="stylesheet" type="text/css" />
+    <link href="../styles/css/tabs.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <div class="row mb-5">
+        <div class="col-12">
+          <h2><i class="fas fa-code mr-3"></i>Write Code</h2>
+        </div>
+      </div>
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            id="api-1-tab"
+            data-toggle="tab"
+            href="#api_1"
+            role="tab"
+            aria-controls="api_1"
+            aria-selected="true"
+            >Request #1</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link add-api"
+            id="add-api"
+            data-toggle="tab"
+            href="#"
+            role="tab"
+            aria-controls="add-api"
+            aria-selected="false"
+            style="pointer-events: none"
+            >Add API</a
+          >
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div
+          class="tab-pane fade show active"
+          id="api_1"
+          role="tabpanel"
+          aria-labelledby="api-1-tab"
+        >
+          <div id="editorSettings" class="accordion mt-1 mb-1">
+            <div class="heading" style="padding: 10px;">Editor Settings</div>
+            <div class="contents">
+              <div class="wrapper">
+                <nav class="tabs">
+                  <div class="selector"></div>
+                  <div id="platform">
+                    <a href="#" class="active" value="java"
+                      ><i class="fab fa-java"></i>Java</a
+                    >
+                    <a href="#" value="node"
+                      ><i class="fab fa-js"></i>Node JS</a
+                    >
+                    <a href="#" value="python"
+                      ><i class="fab fa-python"></i>Python</a
+                    >
+                    <a href="#" value="php"><i class="fab fa-php"></i>PHP</a>
+                  </div>
+                </nav>
+              </div>
+            </div>
+          </div>
+          <div class="editorOut" style="padding: 10px 0 10px 0;">
+            <div id="editor" class="z-depth-3">
+              exports.uuid = (req, res, next) => { const result = { id: 1, name:
+              "rest create service" } return result; }
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <button
+            id="submitApi"
+            type="button"
+            class="btn btn-primary btn-lg btn-block mb-5"
+            style="border-radius: 10px;"
+          >
+            Deploy Rest API
+          </button>
+        </div>
+      </div>
+      <div class="row mb-5">
+        <div class="col-12">
+          <div class="float-right">
+            <h2>Test Rest API<i class="fas fa-cog fa-spin ml-3"></i></h2>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="accordion mb-5">
+            <div class="heading active">Request #1</div>
+            <div class="contents" style="display: block;">
+              <div class="row">
+                <div class="col-12">
+                  <label for="basic-url">Rest Endpoint</label>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon3"
+                        >no define</span
+                      >
+                    </div>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="basic-url"
+                      aria-describedby="basic-addon3"
+                      placeholder="EfQSFUEuyMiKqWzuvpzulKhgHWFRSeOT"
+                    />
+                    <div class="input-group-append">
+                      <button
+                        class="btn btn-md btn-primary m-0 px-3 py-2 z-depth-0 waves-effect"
+                        type="button"
+                        id="sendReq"
+                        style="border-top-right-radius: 10px; border-bottom-right-radius: 10px;"
+                      >
+                        POST
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h5>Request</h5>
+                  <div class="reqBodyOut">
+                    <div id="reqBody" class="z-depth-1">
+                      { "customVariable": "myVariable" }
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <h5>Response</h5>
+                  <div class="resBodyOut">
+                    <div id="resBody" class="z-depth-1">
+                      { "customVariable": "myVariable" }
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <!-- JQuery -->
+  <script
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+  ></script>
+  <!-- Bootstrap tooltips -->
+  <script
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"
+  ></script>
+  <!-- Bootstrap core JavaScript -->
+  <script
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"
+  ></script>
+  <!-- MDB core JavaScript -->
+  <script
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/js/mdb.min.js"
+  ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.6.8/beautify.js"></script>
+  <script src="../styles/js/common.js"></script>
+  <script src="../styles/js/code-editor.js"></script>
+  <script src="../styles/js/accordion.js"></script>
+  <script src="../styles/js/submit-api.js"></script>
+  <script src="../styles/js/tabs.js"></script>
+</html>

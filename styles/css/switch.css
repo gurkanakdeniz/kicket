@@ -1,0 +1,9 @@
+body {
+  font-family: "Kanit", sans-serif;
+  background-color: #143840;
+  transition: all ease 800ms;
+}
+
+h2 {
+  color: #d8e4e6;
+}
