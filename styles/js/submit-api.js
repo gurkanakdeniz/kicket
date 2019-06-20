@@ -11,6 +11,7 @@ $("#submitApi").click(function() {
     success: function(data) {
       // console.log(data);
       $("#basic-url").val(data.endpoint);
+      goToByScroll("testapi");
     }
   });
 });
