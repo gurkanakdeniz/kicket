@@ -101,6 +101,9 @@
                             <a href="#" value="php"
                               ><i class="fab fa-php"></i>PHP</a
                             >
+                            <a href="#" value="html"
+                              ><i class="fab fa-html5"></i>HTML</a
+                            >
                           </div>
                         </nav>
                       </div>
@@ -118,7 +121,7 @@
                       <div id="theme" class="wrapper">
                         <nav class="tabs">
                           <div class="selector"></div>
-                          <div id="theme">
+                          <div id="themeSelection">
                             <a href="#" class="active" value="monokai"
                               ><i class="fas fa-moon"></i>Monokai</a
                             >
@@ -135,10 +138,7 @@
             </div>
           </div>
           <div class="editorOut" style="padding: 10px 0 10px 0;">
-            <div id="editor" class="z-depth-3">
-              exports.uuid = (req, res, next) => { const result = { id: 1, name:
-              "rest create service" } return result; }
-            </div>
+            <div id="editor" class="z-depth-3"></div>
           </div>
         </div>
       </div>
@@ -215,9 +215,7 @@
                 <div class="col-6">
                   <h5>Request</h5>
                   <div class="reqBodyOut">
-                    <div id="reqBody" class="z-depth-1">
-                      { "customVariable": "myVariable" }
-                    </div>
+                    <div id="reqBody" class="z-depth-1"></div>
                   </div>
                 </div>
                 <div class="col-6">

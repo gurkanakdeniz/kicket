@@ -1,3 +1,5 @@
+getExample();
+
 // setTimeout(activeTab, 2000);
 $("#editorSettings").click(function() {
   activeTabLanguage();
@@ -49,7 +51,7 @@ $("#pl .tabs").on("click", "a", function(e) {
     left: itemPos.left + "px",
     width: activeWidth + "px"
   });
-
+  getExample();
   setEditorLanguage(
     currentPlatform() === "node" ? "javascript" : currentPlatform()
   );
