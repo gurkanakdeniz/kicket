@@ -2,7 +2,7 @@ function initTips() {
   $("body").addClass("nav__overlay-active");
 }
 
-initTips();
+//initTips();
 
 function removeOverlay() {
   $("body").removeClass("nav__overlay-active");

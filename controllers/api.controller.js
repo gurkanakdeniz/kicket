@@ -15,7 +15,11 @@ exports.createCode = async function(req, res, next) {
 
 exports.runCode = async function(req, res, next) {
   try {
-    var response = await api.runCode(req.params.uuid, req.body);
+    var response = await api.runCode(
+      req.params.uuid,
+      req.body,
+      requestIp.getClientIp(req).toString()
+    );
     return res.status(200).send(response.data);
   } catch (e) {
     return res.status(500).json({ message: e.message });
