@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <title>:)</title>
+  </head>
+  <style media="screen">
+    body {
+      background-color: gray;
+    }
+    textarea {
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
+    }
+    .area-ground {
+      background-color: lightgray;
+    }
+    .area-ground2 {
+      background-color: whitesmoke;
+    }
+    .box {
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+      margin-top: 1em;
+      margin-bottom: 0.5em;
+      -webkit-border-radius: 0.5em;
+      -moz-border-radius: 0.5em;
+      border-radius: 0.5em;
+      border: 0.1em solid #a6a6a6;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <h3 class="text-center text-warning">Execution Api</h3>
+      <div class="row">
+        <div class="col-md-5">
+          <div class="row">
+            <div class="col-md-12">
+              <textarea
+                class="form-control area-ground"
+                rows="4"
+                cols="50"
+                id="imports"
+              ></textarea>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <textarea
+                class="form-control area-ground"
+                rows="12"
+                cols="50"
+                id="code"
+              >
+public static String ex(Object[] objects) {
+        float jedi = 40 + 2;
+        float divide = 1;
+        try {
+          divide = Float.valueOf((String) objects[0]);
+        } catch (Exception e) {}
+
+        float c = jedi / divide;
+        return String.valueOf(c);
+}</textarea
+              >
+            </div>
+          </div>
+          <button type="button" class="btn btn-success" id="create">
+            Create
+          </button>
+        </div>
+        <div class="col-md-7">
+          <div class="row">
+            <div class="col-md-12">
+              <textarea
+                class="form-control area-ground"
+                rows="1"
+                cols="20"
+                id="url"
+              >/api/run/uuid</textarea>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <textarea
+                class="form-control area-ground"
+                rows="4"
+                cols="20"
+                id="jsonBody"
+              >
+{
+	"args" : ["4"]
+}
+              </textarea>
+            </div>
+          </div>
+          <button type="button" class="btn btn-success" id="run">Run</button>
+          <div class="row">
+            <div class="col-md-12">
+              <p
+                class="text-success box font-weight-bold area-ground2"
+                id="result"
+              ></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      $(document).ready(function() {
+        $("#create").click(function() {
+          var body = {
+            method: $("#code").val(),
+            imports: $("#imports").val()
+          };
+          $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: currentPath() + "/api/create",
+            data: JSON.stringify(body),
+            dataType: "json",
+            cache: false,
+            beforeSend: function() {
+              // loading vs
+            },
+            success: function(result) {
+              $("#url").val("/api/run/" + result.uuid);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+              console.log(jqXHR);
+            }
+          });
+        });
+
+        $("#run").click(function() {
+          var url = currentPath() + $("#url").val();
+          var body = $("#jsonBody").val();
+          $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: url,
+            data: body,
+            dataType: "json",
+            cache: false,
+            beforeSend: function() {
+              // loading vs
+            },
+            success: function(result) {
+              $("#result").text(JSON.stringify(result));
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+              console.log(jqXHR);
+            }
+          });
+        });
+
+        function currentPath() {
+          var response =
+            window.location.protocol +
+            "//" +
+            window.location.hostname +
+            (window.location.port ? ":" + window.location.port : "");
+          return response;
+        }
+      });
+    </script>
+  </body>
+</html>
