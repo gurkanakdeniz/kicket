@@ -5,9 +5,9 @@ $(document).ready(function() {
       .next()
       .slideToggle();
 
-    $(".contents")
+    /*$(".contents")
       .not($(this).next())
-      .slideUp(300);
+      .slideUp(300);*/
 
     $(this)
       .siblings()

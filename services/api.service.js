@@ -80,8 +80,7 @@ exports.runCode = async function createCode(uuid, body) {
 
 exports.exampleCode = async function exampleCode(body) {
   try {
-    console.log("--- example -- " + body.platform);
-    //TODO
+    // console.log("--- example -- " + body.platform);
     if (body.platform === "node") {
       return axios.post(process.env.NODE_API + "/example", {
         headers: { "Content-Type": "application/json" }
