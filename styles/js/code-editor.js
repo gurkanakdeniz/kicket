@@ -12,12 +12,17 @@ editor.getSession().setMode("ace/mode/javascript");
 
 formatCodeEditor();
 
-var jsbOpts = {
+var jsbOptsEditor = {
   indent_size: 4
 };
 function formatCodeEditor() {
   var session = editor.getSession();
-  session.setValue(js_beautify(session.getValue(), jsbOpts));
+  session.setValue(js_beautify(session.getValue(), jsbOptsEditor));
+}
+
+function formatCodeEditorHTML() {
+  var session = editor.getSession();
+  session.setValue(html_beautify(session.getValue(), jsbOptsEditor));
 }
 
 var reqEditor = ace.edit("reqBody");
@@ -28,12 +33,12 @@ reqEditor.getSession().setMode("ace/mode/json");
 
 formatCodeRequest();
 
-var jsbOpts = {
+var jsbOptsRequest = {
   indent_size: 2
 };
 function formatCodeRequest() {
   var session = reqEditor.getSession();
-  session.setValue(js_beautify(session.getValue(), jsbOpts));
+  session.setValue(js_beautify(session.getValue(), jsbOptsRequest));
 }
 
 var resEditor = ace.edit("resBody");
@@ -45,13 +50,19 @@ resEditor.setReadOnly(true);
 
 formatCodeResponse();
 
-var jsbOpts = {
+var jsbOptsResponse = {
   indent_size: 2
 };
 function formatCodeResponse() {
   var session = resEditor.getSession();
-  session.setValue(js_beautify(session.getValue(), jsbOpts));
+  session.setValue(js_beautify(session.getValue(), jsbOptsResponse));
 }
+
+$("#editor textarea").bind("paste", function(e) {
+  let currentMode = editor.getSession().getMode().$id;
+  currentMode = currentMode.substr(currentMode.lastIndexOf("/") + 1);
+  currentMode === "html" ? formatCodeEditorHTML() : formatCodeEditor();
+});
 
 $(".nav-tabs")
   .on("click", "a", function(e) {
