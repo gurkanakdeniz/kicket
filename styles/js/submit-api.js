@@ -9,6 +9,7 @@ $("#submitApi").click(function() {
     contentType: "application/json",
     data: JSON.stringify(body),
     success: function(data) {
+      // console.log(data.endpoint);
       // console.log(data);
       $("#basic-url").val(data.endpoint);
       goToByScroll("testapi");
@@ -39,9 +40,9 @@ function getExample() {
     contentType: "application/json",
     data: JSON.stringify(body),
     success: function(data) {
-      editor.setValue(data.response.exampleCode);
+      editor.setValue(data.exampleCode);
       formatCodeEditor();
-      reqEditor.setValue(data.response.exampleRequest);
+      reqEditor.setValue(data.exampleRequest);
       formatCodeRequest();
     }
   });

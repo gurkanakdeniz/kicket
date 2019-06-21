@@ -3,37 +3,21 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const dbService = require("./db.service");
+const createUtilityService = require("./create.utility.service");
+const runUtilityService = require("./run.utility.service");
+const exampleUtilityService = require("./example.utility.service");
 
 exports.createCode = async function createCode(body, requestIp) {
   try {
     let response = null;
-    // console.log(JSON.stringify(body));
-    // console.log(body.platform);
-    if (body.platform === "java") {
-      response = await axios.post(process.env.JAVA_API + "/create", body.code, {
-        headers: { "Content-Type": "text/plain" }
-      });
-    } else if (body.platform === "node") {
-      response = await axios.post(process.env.NODE_API + "/create", body.code, {
-        headers: { "Content-Type": "text/plain" }
-      });
-    } else if (body.platform === "html") {
-      response = await axios.post(
-        process.env.NODE_API + "/create/html",
-        body.code,
-        {
-          headers: { "Content-Type": "text/plain" }
-        }
-      );
-    } else if (body.platform === "python") {
-      response = await axios.post(
-        process.env.PYTHON_API + "/create",
-        body.code,
-        {
-          headers: { "Content-Type": "text/plain" }
-        }
-      );
-    }
+    let api = await createUtilityService.getApi(body.platform);
+    let header = await createUtilityService.getHeader(body.platform);
+    let bodyData = await createUtilityService.getBody(body.platform, body);
+    console.log(api, header, bodyData);
+
+    response = await axios.post(api, bodyData, {
+      headers: header
+    });
 
     if (response) {
       if (response.data.endpoint !== null) {
@@ -51,27 +35,29 @@ exports.createCode = async function createCode(body, requestIp) {
   }
 };
 
-exports.runCode = async function createCode(uuid, body) {
+exports.runCode = async function runCode(uuid, body, ip) {
   try {
     const result = await dbService.findUUID(uuid);
-    // console.log(result.platform);
-    // console.log(result);
+    let response = null;
     if (result) {
-      if (result.platform === "node") {
-        return axios.post(process.env.NODE_API + "/run/" + uuid, body, {
-          headers: { "Content-Type": "application/json" }
+      let platform = result.platform;
+      let api = await runUtilityService.getApi(platform);
+      let header = await runUtilityService.getHeader(platform);
+      let bodyData = await runUtilityService.getBody(platform, body);
+
+      if (platform !== "html") {
+        response = await axios.post(api + uuid, bodyData, {
+          headers: header
         });
-      } else if (result.platform === "html") {
-        return axios.get(process.env.NODE_API + "/run/html/" + uuid, body, {
-          headers: { "Content-Type": "application/json" }
+      } else {
+        response = await axios.get(api + uuid, bodyData, {
+          headers: header
         });
-      } else if (result.platform === "java") {
-        return axios.post(process.env.JAVA_API + "/run/" + uuid, body);
-      } else if (result.platform === "python") {
-        return axios.post(process.env.PYTHON_API + "/run/" + uuid, body);
       }
+
+      await dbService.updateModel(result, ip);
     }
-    return "error-api";
+    return response;
   } catch (e) {
     console.error(e);
     throw e;
@@ -80,21 +66,13 @@ exports.runCode = async function createCode(uuid, body) {
 
 exports.exampleCode = async function exampleCode(body) {
   try {
-    // console.log("--- example -- " + body.platform);
-    if (body.platform === "node") {
-      return axios.post(process.env.NODE_API + "/example", {
-        headers: { "Content-Type": "application/json" }
-      });
-    } else if (body.platform === "html") {
-      return axios.get(process.env.NODE_API + "/example/html", {
-        headers: { "Content-Type": "application/json" }
-      });
-    } else if (body.platform === "java") {
-      return axios.post(process.env.JAVA_API + "/example");
-    } else if (body.platform === "python") {
-      return axios.post(process.env.PYTHON_API + "/example");
-    }
-    return "error-api";
+    let platform = body.platform;
+    let api = await exampleUtilityService.getApi(platform);
+    let header = await runUtilityService.getHeader(platform);
+
+    return axios.get(api, {
+      headers: header
+    });
   } catch (e) {
     console.error(e);
     throw e;
