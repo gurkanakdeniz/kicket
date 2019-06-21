@@ -9,8 +9,9 @@ $("#submitApi").click(function() {
     contentType: "application/json",
     data: JSON.stringify(body),
     success: function(data) {
-      console.log(data);
+      // console.log(data);
       $("#basic-url").val(data.endpoint);
+      goToByScroll("testapi");
     }
   });
 });
@@ -38,10 +39,12 @@ function getExample() {
     contentType: "application/json",
     data: JSON.stringify(body),
     success: function(data) {
-      editor.setValue(JSON.stringify(data));
-      formatCodeResponse();
+      editor.setValue(data.response.exampleCode);
+      formatCodeEditor();
+      reqEditor.setValue(data.response.exampleRequest);
+      formatCodeRequest();
     }
   });
 }
 
-$("#basic-addon3").text("" + currentPath() + "/api/");
+$("#basic-addon3").text("" + currentPath() + "/api/run/");

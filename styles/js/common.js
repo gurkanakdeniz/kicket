@@ -12,3 +12,18 @@ function currentPlatform() {
     .find(".active")
     .attr("value");
 }
+
+function currentTheme() {
+  return $("#theme")
+    .find(".active")
+    .attr("value");
+}
+
+function goToByScroll(id) {
+  $("html,body").animate(
+    {
+      scrollTop: $("#" + id).offset().top
+    },
+    "slow"
+  );
+}

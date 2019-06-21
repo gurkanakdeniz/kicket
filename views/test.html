@@ -31,12 +31,69 @@
     <link href="../styles/css/accordion.css" rel="stylesheet" type="text/css" />
     <link href="../styles/css/custom.css" rel="stylesheet" type="text/css" />
     <link href="../styles/css/tabs.css" rel="stylesheet" type="text/css" />
+    <link href="../styles/css/overlay.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <div class="container mt-5">
-      <div class="row mb-5">
+    <div class="container">
+      <div class="row">
         <div class="col-12">
-          <h2><i class="fas fa-code mr-3"></i>Write Code</h2>
+          <header class="cd-header">
+            <div class="header-wrapper">
+              <div class="logo-wrap z-depth-5">
+                <a href="#" class="hover-target"
+                  ><span>k</span>ic<span>k</span>et</a
+                >
+              </div>
+              <div class="nav__overlay-but-wrap">
+                <div class="menu-icon hover-target">
+                  <span class="menu-icon__line menu-icon__line-left"></span>
+                  <span class="menu-icon__line"></span>
+                  <span class="menu-icon__line menu-icon__line-right"></span>
+                </div>
+              </div>
+            </div>
+          </header>
+
+          <div class="nav__overlay">
+            <div class="nav__overlay__content">
+              <div class="nav__overlay__list-item">
+                <p>Lorem ipsum ...</p>
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  style="border-radius: 10px;"
+                  onclick="removeOverlay()"
+                >
+                  Let's Start
+                </button>
+              </div>
+              <!--
+              <ul class="nav__overlay__list">
+                <li class="nav__overlay__list-item active-nav">
+                  <a href="#" class="hover-target">home</a>
+                </li>
+                <li class="nav__overlay__list-item">
+                  <a href="#" class="hover-target">studio</a>
+                </li>
+                <li class="nav__overlay__list-item">
+                  <a href="#" class="hover-target">news</a>
+                </li>
+                <li class="nav__overlay__list-item">
+                  <a href="#" class="hover-target">contact</a>
+                </li>
+              </ul>
+              -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container" style="margin-top: 100px !important">
+      <div class="row mb-1">
+        <div class="col-12">
+          <div class="float-right">
+            <h2>Write Code<i class="fas fa-code ml-3"></i></h2>
+          </div>
         </div>
       </div>
       <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -73,58 +130,111 @@
           role="tabpanel"
           aria-labelledby="api-1-tab"
         >
-          <div id="editorSettings" class="accordion mt-1 mb-1">
+          <div id="editorSettings" class="accordion mt-2 mb-3">
             <div class="heading" style="padding: 10px;">Editor Settings</div>
             <div class="contents">
-              <div class="wrapper">
-                <nav class="tabs">
-                  <div class="selector"></div>
-                  <div id="platform">
-                    <a href="#" class="active" value="java"
-                      ><i class="fab fa-java"></i>Java</a
-                    >
-                    <a href="#" value="node"
-                      ><i class="fab fa-js"></i>Node JS</a
-                    >
-                    <a href="#" value="python"
-                      ><i class="fab fa-python"></i>Python</a
-                    >
-                    <a href="#" value="php"><i class="fab fa-php"></i>PHP</a>
+              <div class="row">
+                <div class="col-6">
+                  <div class="row">
+                    <div class="col-12">
+                      <h5>Editor Language</h5>
+                    </div>
                   </div>
-                </nav>
+                  <div class="row">
+                    <div class="col-12">
+                      <div id="pl" class="wrapper">
+                        <nav class="tabs">
+                          <div class="selector"></div>
+                          <div id="platform">
+                            <a href="#" class="active" value="node"
+                              ><i class="fab fa-js"></i>Node JS</a
+                            >
+                            <a href="#" value="java"
+                              ><i class="fab fa-java"></i>Java</a
+                            >
+                            <a href="#" value="python"
+                              ><i class="fab fa-python"></i>Python</a
+                            >
+                            <a href="#" value="php"
+                              ><i class="fab fa-php"></i>PHP</a
+                            >
+                            <a href="#" value="html"
+                              ><i class="fab fa-html5"></i>HTML</a
+                            >
+                          </div>
+                        </nav>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="row">
+                    <div class="col-12">
+                      <h5>Editor Theme</h5>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12">
+                      <div id="theme" class="wrapper">
+                        <nav class="tabs">
+                          <div class="selector"></div>
+                          <div id="themeSelection">
+                            <a href="#" class="active" value="monokai"
+                              ><i class="fas fa-moon"></i>Monokai</a
+                            >
+                            <a href="#" value="eclipse"
+                              ><i class="fas fa-sun"></i>Eclipse</a
+                            >
+                          </div>
+                        </nav>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
           <div class="editorOut" style="padding: 10px 0 10px 0;">
-            <div id="editor" class="z-depth-3">
-              exports.uuid = (req, res, next) => { const result = { id: 1, name:
-              "rest create service" } return result; }
-            </div>
+            <div id="editor" class="z-depth-3"></div>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-12">
+        <div class="col-6">
+          <button
+            id="updateApi"
+            type="button"
+            class="btn btn-outline-default mb-5"
+            style="border-radius: 10px; color: #d8e4e6 !important; max-width: 143.19px; max-height: 45.38px; min-width: 143.19px; min-height: 45.38px;"
+          >
+            <p class="animated fadeInDown m-0">Update API</p>
+            <p class="hov-icon animated fadeInUp m-0">
+              <i class="fas fa-sync-alt" style="font-size: 20px;"></i>
+            </p>
+          </button>
+        </div>
+        <div class="col-6" style="text-align: end;">
           <button
             id="submitApi"
             type="button"
-            class="btn btn-primary btn-lg btn-block mb-5"
-            style="border-radius: 10px;"
+            class="btn btn-outline-primary mb-5"
+            style="border-radius: 10px; color: #d8e4e6 !important; max-width: 143.19px; max-height: 45.38px; min-width: 143.19px; min-height: 45.38px;"
           >
-            Deploy Rest API
+            <p class="animated fadeInDown m-0">Deploy API</p>
+            <p class="hov-icon animated fadeInUp m-0">
+              <i class="fas fa-cloud-upload-alt" style="font-size: 20px;"></i>
+            </p>
           </button>
         </div>
       </div>
-      <div class="row mb-5">
+      <div id="testapi" class="row mb-5">
         <div class="col-12">
-          <div class="float-right">
-            <h2>Test Rest API<i class="fas fa-cog fa-spin ml-3"></i></h2>
-          </div>
+          <h2><i class="fas fa-cog fa-spin mr-3"></i>Test API</h2>
         </div>
       </div>
       <div class="row">
         <div class="col-12">
-          <div class="accordion mb-5">
+          <div id="req_1" class="accordion mb-5">
             <div class="heading active">Request #1</div>
             <div class="contents" style="display: block;">
               <div class="row">
@@ -145,10 +255,10 @@
                     />
                     <div class="input-group-append">
                       <button
-                        class="btn btn-md btn-primary m-0 px-3 py-2 z-depth-0 waves-effect"
+                        class="btn btn-md btn-outline-primary m-0 px-3 py-2 z-depth-0 waves-effect"
                         type="button"
                         id="sendReq"
-                        style="border-top-right-radius: 10px; border-bottom-right-radius: 10px;"
+                        style="border-top-right-radius: 10px; border-bottom-right-radius: 10px; background: #fff !important;"
                       >
                         POST
                       </button>
@@ -160,9 +270,7 @@
                 <div class="col-6">
                   <h5>Request</h5>
                   <div class="reqBodyOut">
-                    <div id="reqBody" class="z-depth-1">
-                      { "customVariable": "myVariable" }
-                    </div>
+                    <div id="reqBody" class="z-depth-1"></div>
                   </div>
                 </div>
                 <div class="col-6">
@@ -202,9 +310,11 @@
   ></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.6.8/beautify.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.6.8/beautify-html.js"></script>
   <script src="../styles/js/common.js"></script>
   <script src="../styles/js/code-editor.js"></script>
   <script src="../styles/js/accordion.js"></script>
   <script src="../styles/js/submit-api.js"></script>
   <script src="../styles/js/tabs.js"></script>
+  <script src="../styles/js/overlay.js"></script>
 </html>
