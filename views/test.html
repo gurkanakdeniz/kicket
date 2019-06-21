@@ -31,12 +31,67 @@
     <link href="../styles/css/accordion.css" rel="stylesheet" type="text/css" />
     <link href="../styles/css/custom.css" rel="stylesheet" type="text/css" />
     <link href="../styles/css/tabs.css" rel="stylesheet" type="text/css" />
+    <link href="../styles/css/overlay.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <div class="container mt-5">
-      <div class="row mb-5">
+    <div class="container">
+      <div class="row">
         <div class="col-12">
-          <h2><i class="fas fa-code mr-3"></i>Write Code</h2>
+          <header class="cd-header">
+            <div class="header-wrapper">
+              <div class="logo-wrap z-depth-5">
+                <a href="#" class="hover-target"><span>k</span>icket</a>
+              </div>
+              <div class="nav__overlay-but-wrap">
+                <div class="menu-icon hover-target">
+                  <span class="menu-icon__line menu-icon__line-left"></span>
+                  <span class="menu-icon__line"></span>
+                  <span class="menu-icon__line menu-icon__line-right"></span>
+                </div>
+              </div>
+            </div>
+          </header>
+
+          <div class="nav__overlay">
+            <div class="nav__overlay__content">
+              <div class="nav__overlay__list-item">
+                <p>Lorem ipsum ...</p>
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  style="border-radius: 10px;"
+                  onclick="removeOverlay()"
+                >
+                  Let's Start
+                </button>
+              </div>
+              <!--
+              <ul class="nav__overlay__list">
+                <li class="nav__overlay__list-item active-nav">
+                  <a href="#" class="hover-target">home</a>
+                </li>
+                <li class="nav__overlay__list-item">
+                  <a href="#" class="hover-target">studio</a>
+                </li>
+                <li class="nav__overlay__list-item">
+                  <a href="#" class="hover-target">news</a>
+                </li>
+                <li class="nav__overlay__list-item">
+                  <a href="#" class="hover-target">contact</a>
+                </li>
+              </ul>
+              -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container" style="margin-top: 100px !important">
+      <div class="row mb-1">
+        <div class="col-12">
+          <div class="float-right">
+            <h2>Write Code<i class="fas fa-code ml-3"></i></h2>
+          </div>
         </div>
       </div>
       <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -172,9 +227,7 @@
       </div>
       <div class="row mb-5">
         <div class="col-12">
-          <div class="float-right">
-            <h2>Test API<i class="fas fa-cog fa-spin ml-3"></i></h2>
-          </div>
+          <h2><i class="fas fa-cog fa-spin mr-3"></i>Test API</h2>
         </div>
       </div>
       <div class="row">
@@ -260,4 +313,5 @@
   <script src="../styles/js/accordion.js"></script>
   <script src="../styles/js/submit-api.js"></script>
   <script src="../styles/js/tabs.js"></script>
+  <script src="../styles/js/overlay.js"></script>
 </html>
