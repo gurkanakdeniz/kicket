@@ -68,7 +68,7 @@ exports.exampleCode = async function exampleCode(body) {
   try {
     let platform = body.platform;
     let api = await exampleUtilityService.getApi(platform);
-    let header = await runUtilityService.getHeader(platform);
+    let header = await exampleUtilityService.getHeader(platform);
 
     return axios.get(api, {
       headers: header
