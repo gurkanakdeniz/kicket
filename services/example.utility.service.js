@@ -6,7 +6,7 @@ exports.getApi = async function getApi(platform) {
   } else if (platform === "java") {
     return process.env.JAVA_API + "/example";
   } else if (platform === "python") {
-    return process.env.PYTON_API + "/example";
+    return process.env.PYTHON_API + "/example";
   }
 };
 

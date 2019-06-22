@@ -18,7 +18,7 @@ exports.getHeader = async function getHeader(platform) {
   } else if (platform === "html") {
     return { "Content-Type": "text/plain" };
   } else if (platform === "python") {
-    return { "Content-Type": "text/plain" };
+    return { "Content-Type": "application/json" };
   }
 };
 
@@ -30,6 +30,6 @@ exports.getBody = async function getBody(platform, data) {
   } else if (platform === "html") {
     return data.code;
   } else if (platform === "python") {
-    return data.code;
+    return data;
   }
 };
