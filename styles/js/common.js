@@ -27,3 +27,18 @@ function goToByScroll(id) {
     "slow"
   );
 }
+
+$("#cc").click(function() {
+  $("#cc span").show();
+  var copyText = currentPath() + "/api/run/" + $("#basic-url").val();
+  console.log(copyText);
+  var textArea = document.createElement("textarea");
+  textArea.value = copyText;
+  document.body.appendChild(textArea);
+  textArea.select();
+  document.execCommand("Copy");
+  textArea.remove();
+  setTimeout(() => {
+    $("#cc span").hide();
+  }, 1000);
+});

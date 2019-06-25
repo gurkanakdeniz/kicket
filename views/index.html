@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>o-o-</title>
+    <title>kicket | Deploy Rest API</title>
     <link
       href="https://fonts.googleapis.com/css?family=Kanit&display=swap"
       rel="stylesheet"
@@ -40,8 +40,8 @@
           <header class="cd-header">
             <div class="header-wrapper">
               <div class="logo-wrap z-depth-5">
-                <a href="#" class="hover-target"
-                  ><span>k</span>ic<span>k</span>et</a
+                <a href="#" class="hover-target">
+                  <span>k</span>ic<span>k</span>et</a
                 >
               </div>
               <div class="nav__overlay-but-wrap">
@@ -57,7 +57,11 @@
           <div class="nav__overlay">
             <div class="nav__overlay__content">
               <div class="nav__overlay__list-item">
-                <p>Lorem ipsum ...</p>
+                <i
+                  class="fab fa-connectdevelop mb-5"
+                  style="font-size: 100px"
+                ></i>
+                <h3>We're prepare some tutorial about Kicket here for u.</h3>
                 <button
                   type="button"
                   class="btn btn-secondary"
@@ -202,6 +206,7 @@
             type="button"
             class="btn btn-outline-default mb-5"
             style="border-radius: 10px; color: #d8e4e6 !important; max-width: 143.19px; max-height: 45.38px; min-width: 143.19px; min-height: 45.38px;"
+            disabled
           >
             <p class="animated fadeInDown m-0">Update API</p>
             <p class="hov-icon animated fadeInUp m-0">
@@ -223,9 +228,11 @@
           </button>
         </div>
       </div>
-      <div id="testapiBegin" class="row mb-5">
+      <div id="testapi" class="row mb-5">
         <div class="col-12">
-          <h2><i class="mr-3"> </i></h2>
+          <hr class="hr-r-l" />
+          <h2><i class="fas fa-cog fa-spin mr-3"></i>Test Your Kicket API</h2>
+          <hr class="hr-l-r" />
         </div>
       </div>
       <div class="row">
@@ -251,9 +258,27 @@
                     />
                     <div class="input-group-append">
                       <button
+                        class="btn btn-md btn-outline-default m-0 px-3 py-2 z-depth-0 waves-effect"
+                        type="button"
+                        id="cc"
+                        style="background: #fff !important;"
+                      >
+                        Copy<span style="display: none;"
+                          ><i class="far fa-copy ml-1"></i
+                        ></span>
+                      </button>
+                      <button
                         class="btn btn-md btn-outline-primary m-0 px-3 py-2 z-depth-0 waves-effect"
                         type="button"
-                        id="sendReq"
+                        id="sendReqGET"
+                        style="background: #fff !important;"
+                      >
+                        GET
+                      </button>
+                      <button
+                        class="btn btn-md btn-outline-primary m-0 px-3 py-2 z-depth-0 waves-effect"
+                        type="button"
+                        id="sendReqPOST"
                         style="border-top-right-radius: 10px; border-bottom-right-radius: 10px; background: #fff !important;"
                       >
                         POST
@@ -280,11 +305,6 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div id="testapi" class="row mb-5">
-        <div class="col-12">
-          <h2><i class="fas fa-cog fa-spin mr-3"></i>Test API</h2>
         </div>
       </div>
     </div>
