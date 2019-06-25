@@ -44,8 +44,13 @@ exports.runCode = async function runCode(uuid, body, ip) {
       let api = await runUtilityService.getApi(platform);
       let header = await runUtilityService.getHeader(platform);
       let bodyData = await runUtilityService.getBody(platform, body);
-
-      if (platform !== "html") {
+      if (platform !== "html" && platform !== "node") {
+        response = await axios.post(api + uuid, bodyData, {
+          headers: header
+        });
+      } else if (platform === "node") {
+        // nodejs need override header just call phase
+        header = { "Content-Type": "application/json" };
         response = await axios.post(api + uuid, bodyData, {
           headers: header
         });
