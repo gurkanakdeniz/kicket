@@ -17,7 +17,20 @@ $("#submitApi").click(function() {
   });
 });
 
-$("#sendReq").click(function() {
+$("#sendReqGET").click(function() {
+  $.ajax({
+    url: currentPath() + "/api/run/" + $("#basic-url").val(),
+    type: "GET",
+    contentType: "application/json",
+    data: reqEditor.getValue(),
+    success: function(data) {
+      resEditor.setValue(JSON.stringify(data));
+      formatCodeResponse();
+    }
+  });
+});
+
+$("#sendReqPOST").click(function() {
   $.ajax({
     url: currentPath() + "/api/run/" + $("#basic-url").val(),
     type: "POST",
@@ -41,7 +54,7 @@ function getExample() {
     data: JSON.stringify(body),
     success: function(data) {
       editor.setValue(data.exampleCode);
-      formatCodeEditor();
+      body.platform === "html" ? formatCodeEditorHTML() : formatCodeEditor();
       reqEditor.setValue(data.exampleRequest);
       formatCodeRequest();
     }
