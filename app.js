@@ -7,6 +7,7 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const dotenv = require("dotenv");
+var favicon = require("serve-favicon");
 dotenv.config();
 
 mongoose.connect(process.env.MONGO, {
@@ -21,6 +22,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname)));
+app.use(favicon(__dirname + "/styles/icon/api.ico"));
 
 app.use("/", indexRouter);
 app.use("/api", apiRouter);

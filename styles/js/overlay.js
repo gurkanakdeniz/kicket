@@ -1,8 +1,10 @@
 function initTips() {
-  $("body").addClass("nav__overlay-active");
+  if (!localStorage.getItem("isOpened")) {
+    $("body").addClass("nav__overlay-active");
+  }
+  localStorage.setItem("isOpened", true);
 }
-
-//initTips();
+initTips();
 
 function removeOverlay() {
   $("body").removeClass("nav__overlay-active");
