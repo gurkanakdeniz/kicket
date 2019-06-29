@@ -13,7 +13,7 @@ exports.createCode = async function createCode(body, requestIp) {
     let api = await createUtilityService.getApi(body.platform);
     let header = await createUtilityService.getHeader(body.platform);
     let bodyData = await createUtilityService.getBody(body.platform, body);
-    console.log(api, header, bodyData);
+    // console.log(api, header, bodyData);
 
     response = await axios.post(api, bodyData, {
       headers: header
@@ -44,7 +44,6 @@ exports.runCode = async function runCode(uuid, body, ip) {
       let api = await runUtilityService.getApi(platform);
       let header = await runUtilityService.getHeader(platform);
       let bodyData = await runUtilityService.getBody(platform, body);
-
       if (platform !== "html") {
         response = await axios.post(api + uuid, bodyData, {
           headers: header

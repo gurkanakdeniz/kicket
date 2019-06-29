@@ -31,3 +31,17 @@
 #updateApi:hover .hov-icon {
   display: inline;
 }
+
+.hr-r-l {
+  border: 0;
+  height: 1px;
+  background: #143840;
+  background-image: linear-gradient(to right, #143840, #143840, #fff);
+}
+
+.hr-l-r {
+  border: 0;
+  height: 1px;
+  background: #143840;
+  background-image: linear-gradient(to right, #fff, #143840, #143840);
+}
