@@ -18,7 +18,7 @@ exports.getHeader = async function getHeader(platform) {
   } else if (platform === "html") {
     return { "Content-Type": "text/plain" };
   } else if (platform === "python") {
-    return { "Content-Type": "text/plain" };
+    return { "Content-Type": "application/json" };
   }
 };
 
