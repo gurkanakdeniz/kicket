@@ -2,6 +2,7 @@ function setEditorTheme(tname) {
   editor.setTheme("ace/theme/" + tname);
 }
 function setEditorLanguage(lname) {
+  lname === "go" ? (lname = lname + "lang") : lname;
   editor.getSession().setMode("ace/mode/" + lname);
 }
 var editor = ace.edit("editor");
@@ -16,11 +17,13 @@ var jsbOptsEditor = {
   indent_size: 4
 };
 function formatCodeEditor() {
+  // node, java, py, go
   var session = editor.getSession();
   session.setValue(js_beautify(session.getValue(), jsbOptsEditor));
 }
 
 function formatCodeEditorHTML() {
+  // html
   var session = editor.getSession();
   session.setValue(html_beautify(session.getValue(), jsbOptsEditor));
 }
