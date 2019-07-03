@@ -54,7 +54,13 @@ function getExample() {
     data: JSON.stringify(body),
     success: function(data) {
       editor.setValue(data.exampleCode);
-      body.platform === "html" ? formatCodeEditorHTML() : formatCodeEditor();
+      if (body.platform === "html") {
+        formatCodeEditorHTML();
+      } else if (body.platform === "php") {
+        // do nothing
+      } else {
+        formatCodeEditor();
+      }
       reqEditor.setValue(data.exampleRequest);
       formatCodeRequest();
     }
