@@ -9,6 +9,8 @@ exports.getApi = async function getApi(platform) {
     return process.env.PYTHON_API + "/create";
   } else if (platform === "go") {
     return process.env.GO_API + "/create";
+  } else if (platform === "php") {
+    return process.env.PHP_API + "/create";
   }
 };
 
@@ -23,6 +25,8 @@ exports.getHeader = async function getHeader(platform) {
     return { "Content-Type": "application/json" };
   } else if (platform === "go") {
     return { "Content-Type": "application/json" };
+  } else if (platform === "php") {
+    return { "Content-Type": "text/plain" };
   }
 };
 
@@ -37,5 +41,7 @@ exports.getBody = async function getBody(platform, data) {
     return data;
   } else if (platform === "go") {
     return data;
+  } else if (platform === "php") {
+    return data.code;
   }
 };
