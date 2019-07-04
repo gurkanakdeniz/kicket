@@ -56,8 +56,8 @@ function getExample() {
       editor.setValue(data.exampleCode);
       if (body.platform === "html") {
         formatCodeEditorHTML();
-      } else if (body.platform === "php") {
-        // do nothing
+      } else if (body.platform === "go") {
+        formatCodeEditorGo();
       } else {
         formatCodeEditor();
       }
