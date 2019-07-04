@@ -1,4 +1,6 @@
 $("#submitApi").click(function() {
+  clearAnimation();
+  loadingInit();
   var body = {
     platform: currentPlatform(),
     code: editor.getValue()
@@ -11,8 +13,13 @@ $("#submitApi").click(function() {
     success: function(data) {
       // console.log(data.endpoint);
       // console.log(data);
-      $("#basic-url").val(data.endpoint);
-      goToByScroll("testapi");
+      setTimeout(function() {
+        loadingReverse();
+      }, 1000);
+      setTimeout(function() {
+        $("#basic-url").val(data.endpoint);
+        goToByScroll("testapi");
+      }, 2500);
     }
   });
 });
@@ -44,6 +51,7 @@ $("#sendReqPOST").click(function() {
 });
 
 function getExample() {
+  exampleAnimation();
   var body = {
     platform: currentPlatform()
   };
@@ -56,13 +64,14 @@ function getExample() {
       editor.setValue(data.exampleCode);
       if (body.platform === "html") {
         formatCodeEditorHTML();
-      } else if (body.platform === "php") {
-        // do nothing
+      } else if (body.platform === "go") {
+        formatCodeEditorGo();
       } else {
         formatCodeEditor();
       }
       reqEditor.setValue(data.exampleRequest);
       formatCodeRequest();
+      clearExample();
     }
   });
 }
