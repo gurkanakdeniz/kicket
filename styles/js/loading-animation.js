@@ -9,7 +9,8 @@ function loadingInit() {
 }
 
 function loadingReverse() {
-  $("#code-statu").html('<i class="far fa-thumbs-up mr-3"></i>');
+  $("#code-statu").html("done");
+  $("#code-statu").removeClass("animated flash infinite slower");
   setTimeout(function() {
     $("#loading").removeClass("zoomIn");
     $("#loading").addClass("animated zoomOut");
@@ -23,8 +24,8 @@ function loadingReverse() {
 }
 
 function clearAnimation() {
-  console.log("clear");
   $("#code-statu").html('<i class="fas fa-terminal mr-3"></i>compiling');
+  $("#code-statu").addClass("animated flash infinite slower");
   $("#editor").removeClass("animated zoomIn");
   $("#loading").removeClass("animated zoomOut");
 }
