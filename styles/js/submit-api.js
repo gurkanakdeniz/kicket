@@ -91,7 +91,7 @@ function getExample() {
       }
       reqEditor.setValue(data.exampleRequest);
       formatCodeRequest();
-      clearExample();
+      //clearExample();
     },
     error: function(jqXHR, textStatus, errorThrown) {
       hideLoading();
