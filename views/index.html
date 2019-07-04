@@ -32,6 +32,7 @@
     <link href="../styles/css/custom.css" rel="stylesheet" type="text/css" />
     <link href="../styles/css/tabs.css" rel="stylesheet" type="text/css" />
     <link href="../styles/css/overlay.css" rel="stylesheet" type="text/css" />
+    <link href="../styles/css/laptop.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
     <div class="container">
@@ -116,6 +117,7 @@
                         target="_blank"
                         >Kicket HTML</a
                       >
+                      <a href="#" target="_blank">Kicket PHP</a>
                     </div>
                     <div class="col-4"></div>
                     <div class="col-4">
@@ -255,6 +257,11 @@
             </div>
           </div>
           <div class="editorOut" style="padding: 10px 0 10px 0;">
+            <div
+              id="loading"
+              class="d-none"
+              style="width: 1100px !important; height: 400px !important;"
+            ></div>
             <div id="editor" class="z-depth-3"></div>
           </div>
         </div>
@@ -394,9 +401,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.10.0/beautify-html.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.10.0/beautify-css.js"></script>
   <script src="../styles/js/common.js"></script>
+  <script src="../styles/js/loading-animation.js"></script>
   <script src="../styles/js/code-editor.js"></script>
   <script src="../styles/js/accordion.js"></script>
   <script src="../styles/js/submit-api.js"></script>
   <script src="../styles/js/tabs.js"></script>
   <script src="../styles/js/overlay.js"></script>
+  <script src="../styles/js/attach.js"></script>
 </html>
