@@ -33,8 +33,12 @@
     <link href="../styles/css/tabs.css" rel="stylesheet" type="text/css" />
     <link href="../styles/css/overlay.css" rel="stylesheet" type="text/css" />
     <link href="../styles/css/laptop.css" rel="stylesheet" type="text/css" />
+    <link href="../styles/css/loading.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
+    <div id="ajaxLoading" class="loader-container hide">
+      <div class="loader-wrapper"><div class="loader"></div></div>
+    </div>
     <div class="container">
       <div class="row">
         <div class="col-12">
@@ -257,11 +261,13 @@
             </div>
           </div>
           <div class="editorOut" style="padding: 10px 0 10px 0;">
-            <div
-              id="loading"
-              class="d-none"
-              style="width: 1100px !important; height: 400px !important;"
-            ></div>
+            <!--
+              <div
+                id="loading"
+                class="d-none"
+                style="width: 1100px !important; height: 400px !important;"
+              ></div>
+            -->
             <div id="editor" class="z-depth-3"></div>
           </div>
         </div>
