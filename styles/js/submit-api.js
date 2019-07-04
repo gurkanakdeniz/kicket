@@ -1,6 +1,6 @@
 $("#submitApi").click(function() {
-  clearAnimation();
-  loadingInit();
+  //clearAnimation();
+  // loadingInit();
   var body = {
     platform: currentPlatform(),
     code: editor.getValue()
@@ -10,16 +10,18 @@ $("#submitApi").click(function() {
     type: "POST",
     contentType: "application/json",
     data: JSON.stringify(body),
+    beforeSend: function() {
+      showLoading();
+    },
     success: function(data) {
       // console.log(data.endpoint);
       // console.log(data);
-      setTimeout(function() {
-        loadingReverse();
-      }, 1000);
-      setTimeout(function() {
-        $("#basic-url").val(data.endpoint);
-        goToByScroll("testapi");
-      }, 2500);
+      hideLoading();
+      $("#basic-url").val(data.endpoint);
+      goToByScroll("testapi");
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+      hideLoading();
     }
   });
 });
@@ -30,9 +32,16 @@ $("#sendReqGET").click(function() {
     type: "GET",
     contentType: "application/json",
     data: reqEditor.getValue(),
+    beforeSend: function() {
+      showLoading();
+    },
     success: function(data) {
+      hideLoading();
       resEditor.setValue(JSON.stringify(data));
       formatCodeResponse();
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+      hideLoading();
     }
   });
 });
@@ -43,15 +52,22 @@ $("#sendReqPOST").click(function() {
     type: "POST",
     contentType: "application/json",
     data: reqEditor.getValue(),
+    beforeSend: function() {
+      showLoading();
+    },
     success: function(data) {
+      hideLoading();
       resEditor.setValue(JSON.stringify(data));
       formatCodeResponse();
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+      hideLoading();
     }
   });
 });
 
 function getExample() {
-  exampleAnimation();
+  //  exampleAnimation();
   var body = {
     platform: currentPlatform()
   };
@@ -60,7 +76,11 @@ function getExample() {
     type: "POST",
     contentType: "application/json",
     data: JSON.stringify(body),
+    beforeSend: function() {
+      showLoading();
+    },
     success: function(data) {
+      hideLoading();
       editor.setValue(data.exampleCode);
       if (body.platform === "html") {
         formatCodeEditorHTML();
@@ -72,6 +92,9 @@ function getExample() {
       reqEditor.setValue(data.exampleRequest);
       formatCodeRequest();
       clearExample();
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+      hideLoading();
     }
   });
 }
