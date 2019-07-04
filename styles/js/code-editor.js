@@ -2,6 +2,7 @@ function setEditorTheme(tname) {
   editor.setTheme("ace/theme/" + tname);
 }
 function setEditorLanguage(lname) {
+  lname === "go" ? (lname = lname + "lang") : lname;
   editor.getSession().setMode("ace/mode/" + lname);
 }
 var editor = ace.edit("editor");
@@ -13,14 +14,34 @@ editor.getSession().setMode("ace/mode/javascript");
 formatCodeEditor();
 
 var jsbOptsEditor = {
-  indent_size: 4
+  indent_size: 2,
+  templating: ["auto"]
 };
-function formatCodeEditor() {
+var jsbOptsEditorPhp = {
+  indent_size: 2,
+  templating: ["php"]
+};
+
+var jsbOptsEditorGo = {
+  indent_size: 2,
+  templating: ["none"]
+};
+
+function formatCodeEditorGo() {
   var session = editor.getSession();
-  session.setValue(js_beautify(session.getValue(), jsbOptsEditor));
+  session.setValue(html_beautify(session.getValue(), jsbOptsEditorGo));
+}
+
+function formatCodeEditor() {
+  // node, java, py, go
+  var session = editor.getSession();
+  var editorOpts =
+    currentPlatform() === "php" ? jsbOptsEditorPhp : jsbOptsEditor;
+  session.setValue(js_beautify(session.getValue(), editorOpts));
 }
 
 function formatCodeEditorHTML() {
+  // html
   var session = editor.getSession();
   session.setValue(html_beautify(session.getValue(), jsbOptsEditor));
 }
