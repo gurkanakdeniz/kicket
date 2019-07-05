@@ -6,7 +6,7 @@ $("#submitApi").click(function() {
     code: editor.getValue()
   };
   $.ajax({
-    url: currentPath() + "/api/create1",
+    url: currentPath() + "/api/create",
     type: "POST",
     contentType: "application/json",
     data: JSON.stringify(body),
