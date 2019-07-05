@@ -53,6 +53,7 @@ function editorLoadInit() {
 }
 
 function clearEditorLoad() {
+  $("#submitApi").attr("disabled", false);
   $(".loading-indicator > .dot").removeClass("loading-indicator-error");
   $("#editor-load-text").text("preparing editor");
   $("#editor").css("filter", "blur(0px)");
