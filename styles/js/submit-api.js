@@ -1,12 +1,12 @@
 $("#submitApi").click(function() {
-  //clearAnimation();
-  // loadingInit();
+  clearDeployAnimation();
+  deployLoadInit();
   var body = {
     platform: currentPlatform(),
     code: editor.getValue()
   };
   $.ajax({
-    url: currentPath() + "/api/create",
+    url: currentPath() + "/api/create1",
     type: "POST",
     contentType: "application/json",
     data: JSON.stringify(body),
@@ -14,14 +14,16 @@ $("#submitApi").click(function() {
       showLoading();
     },
     success: function(data) {
-      // console.log(data.endpoint);
-      // console.log(data);
-      hideLoading();
-      $("#basic-url").val(data.endpoint);
-      goToByScroll("testapi");
+      setTimeout(function() {
+        deployLoadReverse();
+      }, 1000);
+      setTimeout(function() {
+        $("#basic-url").val(data.endpoint);
+        goToByScroll("testapi");
+      }, 2500);
     },
-    error: function(jqXHR, textStatus, errorThrown) {
-      hideLoading();
+    error: function(error) {
+      deployLoadError();
     }
   });
 });
@@ -67,7 +69,8 @@ $("#sendReqPOST").click(function() {
 });
 
 function getExample() {
-  //  exampleAnimation();
+  clearEditorLoad();
+  editorLoadInit();
   var body = {
     platform: currentPlatform()
   };
@@ -91,10 +94,11 @@ function getExample() {
       }
       reqEditor.setValue(data.exampleRequest);
       formatCodeRequest();
-      //clearExample();
+      clearEditorLoad();
     },
-    error: function(jqXHR, textStatus, errorThrown) {
-      hideLoading();
+    error: function(error) {
+      $(".loading-indicator > .dot").addClass("loading-indicator-error");
+      $("#editor-load-text").text("try again, later");
     }
   });
 }
