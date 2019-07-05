@@ -42,3 +42,11 @@ $("#cc").click(function() {
     $("#cc span").hide();
   }, 1000);
 });
+
+function showLoading() {
+  $("#ajaxLoading").removeClass("hide");
+}
+
+function hideLoading() {
+  $("#ajaxLoading").addClass("hide");
+}
