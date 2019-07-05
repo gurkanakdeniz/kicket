@@ -10,9 +10,6 @@ $("#submitApi").click(function() {
     type: "POST",
     contentType: "application/json",
     data: JSON.stringify(body),
-    beforeSend: function() {
-      showLoading();
-    },
     success: function(data) {
       setTimeout(function() {
         deployLoadReverse();
@@ -34,16 +31,9 @@ $("#sendReqGET").click(function() {
     type: "GET",
     contentType: "application/json",
     data: reqEditor.getValue(),
-    beforeSend: function() {
-      showLoading();
-    },
     success: function(data) {
-      hideLoading();
       resEditor.setValue(JSON.stringify(data));
       formatCodeResponse();
-    },
-    error: function(jqXHR, textStatus, errorThrown) {
-      hideLoading();
     }
   });
 });
@@ -54,16 +44,9 @@ $("#sendReqPOST").click(function() {
     type: "POST",
     contentType: "application/json",
     data: reqEditor.getValue(),
-    beforeSend: function() {
-      showLoading();
-    },
     success: function(data) {
-      hideLoading();
       resEditor.setValue(JSON.stringify(data));
       formatCodeResponse();
-    },
-    error: function(jqXHR, textStatus, errorThrown) {
-      hideLoading();
     }
   });
 });
@@ -79,11 +62,7 @@ function getExample() {
     type: "POST",
     contentType: "application/json",
     data: JSON.stringify(body),
-    beforeSend: function() {
-      showLoading();
-    },
     success: function(data) {
-      hideLoading();
       editor.setValue(data.exampleCode);
       if (body.platform === "html") {
         formatCodeEditorHTML();
@@ -99,6 +78,7 @@ function getExample() {
     error: function(error) {
       $(".loading-indicator > .dot").addClass("loading-indicator-error");
       $("#editor-load-text").text("try again, later");
+      $("#submitApi").attr("disabled", true);
     }
   });
 }
