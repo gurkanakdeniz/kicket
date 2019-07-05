@@ -33,8 +33,12 @@
     <link href="../styles/css/tabs.css" rel="stylesheet" type="text/css" />
     <link href="../styles/css/overlay.css" rel="stylesheet" type="text/css" />
     <link href="../styles/css/laptop.css" rel="stylesheet" type="text/css" />
+    <link href="../styles/css/dots.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
+    <div id="ajaxLoading" class="loader-container hide">
+      <div class="loader-wrapper"><div class="loader"></div></div>
+    </div>
     <div class="container">
       <div class="row">
         <div class="col-12">
@@ -257,11 +261,8 @@
             </div>
           </div>
           <div class="editorOut" style="padding: 10px 0 10px 0;">
-            <div
-              id="loading"
-              class="d-none"
-              style="width: 1100px !important; height: 400px !important;"
-            ></div>
+            <div id="editor-load" class="d-none"></div>
+            <div id="deploy-load" class="d-none"></div>
             <div id="editor" class="z-depth-3"></div>
           </div>
         </div>
@@ -400,12 +401,12 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.10.0/beautify.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.10.0/beautify-html.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.10.0/beautify-css.js"></script>
+  <script src="../styles/js/attach.js"></script>
   <script src="../styles/js/common.js"></script>
-  <script src="../styles/js/loading-animation.js"></script>
+  <script src="../styles/js/load-animation.js"></script>
   <script src="../styles/js/code-editor.js"></script>
   <script src="../styles/js/accordion.js"></script>
   <script src="../styles/js/submit-api.js"></script>
   <script src="../styles/js/tabs.js"></script>
   <script src="../styles/js/overlay.js"></script>
-  <script src="../styles/js/attach.js"></script>
 </html>
