@@ -3,7 +3,7 @@ sut:
   dockerfile: Dockerfile.test
   links:
     - mongo
-web:
+app:
   build: .
   dockerfile: Dockerfile
   links:
