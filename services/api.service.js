@@ -88,8 +88,11 @@ exports.getExistCode = async function getExistCode(uuid, ip) {
       return axios.get(api + uuid);
     } else {
       const response = {
-        data:
-          "/* kicketCode: 'N998',kicketType: 'error', kicketMessage: 'No Such File'"
+        data: {
+          code:
+            "/* kicketCode: 'N993',kicketType: 'error', kicketMessage: 'No Such API'",
+          platform: "node"
+        }
       };
       return response;
     }
