@@ -1,5 +1,5 @@
 sleep 5
-if curl web | grep -q '<b>Visits:</b> '; then
+if curl app | grep -q 'kicket'; then
   echo "Tests passed!"
   exit 0
 else
