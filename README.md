@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/gurkanakdeniz/kicket.svg?branch=master)](https://travis-ci.com/gurkanakdeniz/kicket)
 # kicket
 
 kicket
