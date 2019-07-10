@@ -21,11 +21,12 @@ a:hover {
 /* #Primary style
 ================================================== */
 
-.section {
+/* .section {
   position: relative;
   width: 100%;
   display: block;
-}
+} */
+
 .over-hide {
   overflow: hidden;
 }
@@ -160,7 +161,7 @@ a:hover {
   position: fixed;
   visibility: hidden;
   top: 50%;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   -webkit-transform: translate(0%, -50%);
   transform: translate(0%, -50%);
   width: 100%;
