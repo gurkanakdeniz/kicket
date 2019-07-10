@@ -78,8 +78,8 @@
   max-width: 100%;
   margin: 0 auto;
   height: 4px;
-  background: #fff;
-  border-radius: 1px;
+  background: #a6c;
+  border-radius: 5px;
 }
 .w-tabs .content {
   margin-top: 30px;
