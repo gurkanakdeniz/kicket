@@ -55,4 +55,9 @@ $("#pl .tabs").on("click", "a", function(e) {
   setEditorLanguage(
     currentPlatform() === "node" ? "javascript" : currentPlatform()
   );
+  if (currentPlatform() === "node") {
+    $("#existApiGET").attr("disabled", false);
+  } else {
+    $("#existApiGET").attr("disabled", true);
+  }
 });
