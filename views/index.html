@@ -34,6 +34,7 @@
     <link href="../styles/css/overlay.css" rel="stylesheet" type="text/css" />
     <link href="../styles/css/laptop.css" rel="stylesheet" type="text/css" />
     <link href="../styles/css/dots.css" rel="stylesheet" type="text/css" />
+    <link href="../styles/css/exist-api.css" rel="stylesheet" type="text/css" />
     <link
       href="../styles/css/walkthrough.css"
       rel="stylesheet"
@@ -296,42 +297,44 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-3">
-          <button
-            id="updateApi"
-            type="button"
-            class="btn btn-outline-default mb-5"
-            style="border-radius: 10px; color: #d8e4e6 !important; max-width: 143.19px; max-height: 45.38px; min-width: 143.19px; min-height: 45.38px;"
-            disabled
-          >
-            <p class="animated fadeInDown m-0">Update API</p>
-            <p class="hov-icon animated fadeInUp m-0">
-              <i class="fas fa-sync-alt" style="font-size: 20px;"></i>
-            </p>
-          </button>
-        </div>
-        <div class="col-6">
-          <div class="input-group mb-3" style="margin-top: .375rem;">
-            <input
-              type="text"
-              class="form-control"
-              style="border-top-left-radius: 10px; border-bottom-left-radius: 10px; background: transparent; border: 2px solid #fb3!important; color: #d8e4e6 !important; max-height: 45.38px; min-height: 45.38px;"
-              id="exist-api"
-              aria-describedby="exist-api"
-              placeholder="Paste hash here to get exist API to editor"
-            />
-            <div class="input-group-append">
+        <div class="col-9">
+          <div class="input-group">
+            <div class="input-group-prepend">
               <button
-                class="btn btn-md btn-outline-warning m-0 px-3 py-2 z-depth-0 waves-effect"
+                class="border-first-btn-full search-button btn btn-outline-default waves-effect align-h align-w margin-align-btn"
                 type="button"
                 id="existApiGET"
-                style="border-top-right-radius: 10px; border-bottom-right-radius: 10px; max-height: 45.38px; min-height: 45.38px;"
+                style="color: #d8e4e6 !important;"
               >
-                GET API
+                <p class="animated fadeInDown m-0">Exist API</p>
               </button>
+            </div>
+            <div class="exist-api-input margin-align-field">
+              <i id="div-icon" class="fas fa-angle-right icon ml-2 mr-2"></i>
+              <input
+                type="text"
+                id="apiField"
+                class="form-control align-h gradient"
+                placeholder="Paste hash here to get exist API to editor"
+                val=""
+                aria-label="Example text with button addon"
+                aria-describedby="button-addon1"
+                style="border:2px solid; border-radius: 0px; background: transparent; color: #d8e4e6 !important;"
+              />
+              <div class="input-group-append">
+                <button
+                  class="btn btn-md btn-outline-secondary m-0 px-3 py-2 z-depth-0 waves-effect align-h"
+                  type="button"
+                  id="updateApi"
+                  style="border-top-right-radius: 10px; border-bottom-right-radius: 10px;"
+                >
+                  Update
+                </button>
+              </div>
             </div>
           </div>
         </div>
+
         <div class="col-3" style="text-align: end;">
           <button
             id="submitApi"
@@ -459,4 +462,5 @@
   <script src="../styles/js/submit-api.js"></script>
   <script src="../styles/js/tabs.js"></script>
   <script src="../styles/js/overlay.js"></script>
+  <script src="../styles/js/exist-api.js"></script>
 </html>
