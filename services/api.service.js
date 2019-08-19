@@ -17,7 +17,8 @@ exports.createCode = async function createCode(body, requestIp) {
     // console.log(api, header, bodyData);
 
     response = await axios.post(api, bodyData, {
-      headers: header
+      headers: header,
+      timeout: getTimeout()
     });
 
     if (response) {
@@ -47,7 +48,8 @@ exports.runCode = async function runCode(uuid, body, ip) {
       let bodyData = await runUtilityService.getBody(platform, body);
       if (platform !== "html") {
         response = await axios.post(api + uuid, bodyData, {
-          headers: header
+          headers: header,
+          timeout: getTimeout()
         });
       } else {
         response = await axios.get(api + uuid, bodyData, {
@@ -71,7 +73,8 @@ exports.exampleCode = async function exampleCode(body) {
     let header = await exampleUtilityService.getHeader(platform);
 
     return axios.get(api, {
-      headers: header
+      headers: header,
+      timeout: getTimeout()
     });
   } catch (e) {
     console.error(e);
@@ -99,5 +102,44 @@ exports.getExistCode = async function getExistCode(uuid, ip) {
   } catch (e) {
     console.error(e);
     throw e;
+  }
+};
+
+exports.getTimeout = function getTimeout() {
+  try {
+    var timeout = process.env.TIMEOUT;
+
+    if (timeout) {
+      return timeout;
+    }
+  } catch (e) {
+    console.error(e);
+  }
+
+  return 1000 * 20;
+};
+
+exports.init = async function init() {
+  try {
+    var initApis = process.env.INIT;
+
+    if (initApis) {
+      let platforms = ["node", "html", "java", "python", "go", "php"];
+
+      for (var platform in platforms) {
+        try {
+          axios.get(api, {
+            headers: header,
+            timeout: getTimeout()
+          });
+
+          console.error("init -> " + platform);
+        } catch (ex) {
+          console.error(ex);
+        }
+      }
+    }
+  } catch (e) {
+    console.error(e);
   }
 };
