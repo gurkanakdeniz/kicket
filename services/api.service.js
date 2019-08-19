@@ -123,12 +123,14 @@ exports.init = async function init() {
 
       let platforms = ["node", "html", "java", "python", "go", "php"];
 
-      for (var platform in platforms) {
+      for (var pl in platforms) {
         try {
+          var platform = platforms[pl];
+
           let api = await exampleUtilityService.getApi(platform);
           let header = await exampleUtilityService.getHeader(platform);
 
-          axios.get(api, {
+          var response = axios.get(api, {
             headers: header,
             timeout: timeout
           });
