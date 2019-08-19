@@ -64,13 +64,16 @@
 
 #editor-load {
   position: absolute;
-  width: 1110px;
   height: 400px;
   display: flex;
   z-index: 1;
 }
 
 #deploy-load {
-  width: 1100px !important;
   height: 400px !important;
+}
+
+.disabled-div {
+  pointer-events: none;
+  opacity: 0.5;
 }
