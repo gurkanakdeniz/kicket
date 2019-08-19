@@ -125,6 +125,9 @@ exports.init = async function init() {
 
       for (var platform in platforms) {
         try {
+          let api = await exampleUtilityService.getApi(platform);
+          let header = await exampleUtilityService.getHeader(platform);
+
           axios.get(api, {
             headers: header,
             timeout: timeout
