@@ -130,7 +130,7 @@ exports.init = async function init() {
           let api = await exampleUtilityService.getApi(platform);
           let header = await exampleUtilityService.getHeader(platform);
 
-          var response = axios.get(api, {
+          var response = await axios.get(api, {
             headers: header,
             timeout: timeout
           });
