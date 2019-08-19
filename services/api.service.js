@@ -7,6 +7,7 @@ const createUtilityService = require("./create.utility.service");
 const runUtilityService = require("./run.utility.service");
 const existUtilityService = require("./exist.utility.service");
 const exampleUtilityService = require("./example.utility.service");
+const commonUtilityService = require("./common.utility.service");
 
 exports.createCode = async function createCode(body, requestIp) {
   try {
@@ -16,9 +17,11 @@ exports.createCode = async function createCode(body, requestIp) {
     let bodyData = await createUtilityService.getBody(body.platform, body);
     // console.log(api, header, bodyData);
 
+    var timeout = await commonUtilityService.getTimeout();
+
     response = await axios.post(api, bodyData, {
       headers: header,
-      timeout: getTimeout()
+      timeout: timeout
     });
 
     if (response) {
@@ -46,14 +49,18 @@ exports.runCode = async function runCode(uuid, body, ip) {
       let api = await runUtilityService.getApi(platform);
       let header = await runUtilityService.getHeader(platform);
       let bodyData = await runUtilityService.getBody(platform, body);
+
+      var timeout = await commonUtilityService.getTimeout();
+
       if (platform !== "html") {
         response = await axios.post(api + uuid, bodyData, {
           headers: header,
-          timeout: getTimeout()
+          timeout: timeout
         });
       } else {
         response = await axios.get(api + uuid, bodyData, {
-          headers: header
+          headers: header,
+          timeout: timeout
         });
       }
 
@@ -72,9 +79,11 @@ exports.exampleCode = async function exampleCode(body) {
     let api = await exampleUtilityService.getApi(platform);
     let header = await exampleUtilityService.getHeader(platform);
 
+    var timeout = await commonUtilityService.getTimeout();
+
     return axios.get(api, {
       headers: header,
-      timeout: getTimeout()
+      timeout: timeout
     });
   } catch (e) {
     console.error(e);
@@ -105,32 +114,20 @@ exports.getExistCode = async function getExistCode(uuid, ip) {
   }
 };
 
-exports.getTimeout = function getTimeout() {
-  try {
-    var timeout = process.env.TIMEOUT;
-
-    if (timeout) {
-      return timeout;
-    }
-  } catch (e) {
-    console.error(e);
-  }
-
-  return 1000 * 20;
-};
-
 exports.init = async function init() {
   try {
     var initApis = process.env.INIT;
 
-    if (initApis) {
+    if (initApis === "true") {
+      var timeout = await commonUtilityService.getTimeout();
+
       let platforms = ["node", "html", "java", "python", "go", "php"];
 
       for (var platform in platforms) {
         try {
           axios.get(api, {
             headers: header,
-            timeout: getTimeout()
+            timeout: timeout
           });
 
           console.error("init -> " + platform);
