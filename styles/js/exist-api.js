@@ -32,6 +32,7 @@ $("#existApiGET").click(function(e) {
       error: function(error) {
         $(".loading-indicator > .dot").addClass("loading-indicator-error");
         $("#editor-load-text").text("try again, later");
+        $("#pl").removeClass("disabled-div");
         $("#submitApi").attr("disabled", true);
         setTimeout(function() {
           clearEditorLoad();
