@@ -44,17 +44,36 @@
   height: 1px;
   background: #143840;
   background-image: linear-gradient(to right, #fff, #143840, #143840);
+  border-radius: 10px;
+}
+
+.hr-r-l-walkt {
+  border: 0;
+  height: 3px;
+  background: #14384000;
+  background-image: linear-gradient(to right, #14384000, #14384000, #fff);
+  border-radius: 10px;
+}
+
+.hr-l-r-walkt {
+  border: 0;
+  height: 3px;
+  background: #14384000;
+  background-image: linear-gradient(to right, #fff, #14384000, #14384000);
 }
 
 #editor-load {
   position: absolute;
-  width: 1110px;
   height: 400px;
   display: flex;
   z-index: 1;
 }
 
 #deploy-load {
-  width: 1100px !important;
   height: 400px !important;
+}
+
+.disabled-div {
+  pointer-events: none;
+  opacity: 0.5;
 }

@@ -49,6 +49,7 @@ function clearDeployAnimation() {
 function editorLoadInit() {
   $("#editor").css("filter", "blur(3px)");
   $("#editor-load").removeClass("d-none");
+  $("#pl").addClass("disabled-div");
   editor.setReadOnly(true);
 }
 
@@ -58,5 +59,6 @@ function clearEditorLoad() {
   $("#editor-load-text").text("preparing editor");
   $("#editor").css("filter", "blur(0px)");
   $("#editor-load").addClass("d-none");
+  $("#pl").removeClass("disabled-div");
   editor.setReadOnly(false);
 }

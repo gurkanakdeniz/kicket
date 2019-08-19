@@ -7,5 +7,6 @@ router.post("/create", apiController.createCode);
 router.get("/run/:uuid", apiController.runCode);
 router.post("/run/:uuid", apiController.runCode);
 router.post("/example", apiController.exampleCode);
+router.get("/exist/:uuid", apiController.getExistCode);
 
 module.exports = router;

@@ -5,6 +5,7 @@ dotenv.config();
 const dbService = require("./db.service");
 const createUtilityService = require("./create.utility.service");
 const runUtilityService = require("./run.utility.service");
+const existUtilityService = require("./exist.utility.service");
 const exampleUtilityService = require("./example.utility.service");
 
 exports.createCode = async function createCode(body, requestIp) {
@@ -75,6 +76,29 @@ exports.exampleCode = async function exampleCode(body) {
       headers: header,
       timeout: getTimeout()
     });
+  } catch (e) {
+    console.error(e);
+    throw e;
+  }
+};
+
+exports.getExistCode = async function getExistCode(uuid, ip) {
+  try {
+    const result = await dbService.findUUID(uuid);
+    if (result) {
+      let platform = result.platform;
+      let api = await existUtilityService.getApi(platform);
+      return axios.get(api + uuid);
+    } else {
+      const response = {
+        data: {
+          code:
+            "/* kicketCode: 'N993',kicketType: 'error', kicketMessage: 'No Such API'",
+          platform: "node"
+        }
+      };
+      return response;
+    }
   } catch (e) {
     console.error(e);
     throw e;

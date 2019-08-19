@@ -1,0 +1,55 @@
+.exist-api-input {
+  display: flex;
+  visibility: hidden;
+  transform: scaleX(0);
+  transform-origin: 0;
+  transition-timing-function: linear;
+  transition: transform 0.3s, visibility 0.3s;
+  width: 75%;
+}
+
+.border-first-btn-full {
+  transition: all 0.9s;
+  border-radius: 10px !important;
+}
+
+.border-first-btn-half {
+  transition: all 0.1s;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.empty-field {
+  border-top: 2px solid #ed1c24 !important;
+  border-bottom: 2px solid #ed1c24 !important;
+}
+
+.margin-align-btn {
+  margin: 0.375rem 0 0.375rem 0.375rem;
+}
+
+.margin-align-field {
+  margin: 0.375rem 0;
+}
+
+.align-h {
+  max-height: 45.38px;
+  min-height: 45.38px;
+}
+
+.align-w {
+  max-width: 143.19px;
+  min-width: 143.19px;
+}
+
+.icon {
+  font-size: 32px;
+  line-height: 45.38px;
+  color: #2bbbad;
+}
+
+.gradient {
+  border-image: linear-gradient(to right, #2bbbad, #a6c) 1 1 90% !important;
+}

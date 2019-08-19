@@ -10,6 +10,7 @@ const dotenv = require("dotenv");
 const apiService = require("./services/api.service");
 
 var favicon = require("serve-favicon");
+const kicketLogger = require("./utils/kicket.logger");
 dotenv.config();
 
 mongoose.connect(
@@ -33,6 +34,7 @@ app.use("/", indexRouter);
 app.use("/api", apiRouter);
 
 apiService.init();
+kicketLogger.doit("Application is running with no problems...");
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
