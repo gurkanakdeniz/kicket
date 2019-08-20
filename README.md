@@ -58,4 +58,4 @@
 - [HTML Repository](https://github.com/ilkemerol/kicket-html)
 - [Pyhton Repository](https://github.com/gurkanakdeniz/kicket-python)
 - [Golang Repository](https://github.com/gurkanakdeniz/kicket-go)
-- [PHP Repository](https://github.com/gurkanakdeniz/kicket-go)
+- [PHP Repository](https://github.com/mertcc34/exec-php)
