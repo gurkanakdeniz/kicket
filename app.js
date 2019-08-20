@@ -7,13 +7,18 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const dotenv = require("dotenv");
+const apiService = require("./services/api.service");
+
 var favicon = require("serve-favicon");
 const kicketLogger = require("./utils/kicket.logger");
 dotenv.config();
 
-mongoose.connect(process.env.MONGO, {
-  useNewUrlParser: true
-});
+mongoose.connect(
+  process.env.MONGO,
+  {
+    useNewUrlParser: true
+  }
+);
 
 const indexRouter = require("./routes/index");
 const apiRouter = require("./routes/api");
@@ -28,6 +33,7 @@ app.use(favicon(__dirname + "/styles/icon/api.ico"));
 app.use("/", indexRouter);
 app.use("/api", apiRouter);
 
+apiService.init();
 kicketLogger.doit("Application is running with no problems...");
 
 // catch 404 and forward to error handler
