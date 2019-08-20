@@ -7,3 +7,12 @@ body {
 h2 {
   color: #d8e4e6;
 }
+
+.mobile-view {
+  height: 100vh;
+  vertical-align: middle;
+  color: #d8e4e6;
+  line-height: 100vh;
+  display: grid;
+  align-items: center;
+}
