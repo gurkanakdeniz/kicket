@@ -71,6 +71,10 @@ function getExample() {
       } else {
         formatCodeEditor();
       }
+
+      if (data.exampleComment) {
+        editor.session.insert({ row: 0, column: 0 }, data.exampleComment);
+      }
       reqEditor.setValue(data.exampleRequest);
       formatCodeRequest();
       clearEditorLoad();
