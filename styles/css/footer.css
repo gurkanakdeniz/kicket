@@ -1,0 +1,22 @@
+.lh-40 {
+  line-height: 40px;
+}
+
+.lh-79 {
+  line-height: 79px;
+}
+
+.dev-card {
+  padding: 5px;
+  border: 2px solid #d8e4e6;
+  border-radius: 10px;
+}
+
+.footer-bg {
+  background: rgb(14, 90, 107);
+  background: linear-gradient(
+    0deg,
+    rgba(14, 90, 107, 1) 0%,
+    rgba(20, 56, 64, 1) 90%
+  );
+}
