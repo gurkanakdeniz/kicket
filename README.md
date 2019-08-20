@@ -4,7 +4,7 @@
 
 # Why we did that?
 
-> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
 # What's happening on inside?
 
@@ -30,13 +30,17 @@
    - You need to MongoDB and Node JS(> v12.5.0)
    - In this case, you need to change .env file.
    - Your .env file look like;
-     - JAVA_API=http://localhost:8080
-     - NODE_API=https://kicket-node.herokuapp.com
-     - PYTHON_API=https://kicket-python.herokuapp.com
-     - PHP_API=http://localhost:5000
-     - HTML_API=http://localhost:3004
-     - GO_API=https://kicket-go.herokuapp.com
-     - MONGO=mongodb://localhost:27017/execode
+
+     ```
+     JAVA_API=https://kicket-java.herokuapp.com
+     NODE_API=https://kicket-node.herokuapp.com
+     PYTHON_API=https://kicket-python.herokuapp.com
+     PHP_API=https://kicket-php.herokuapp.com/index.php/Api
+     HTML_API=https://kicket-html.herokuapp.com
+     GO_API=https://kicket-go.herokuapp.com
+     MONGO=mongodb://localhost:27017/execode
+     ```
+
    - Type your terminal npm install & npm start.
 
 2. You can clone [kicket](https://github.com/gurkanakdeniz/kicket) repository and all dependent projects(repository links are below). In this case, you don't touch any files just type your terminal npm install then, npm start.
