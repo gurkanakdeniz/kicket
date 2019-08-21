@@ -4,7 +4,7 @@
 
 # Why we did that?
 
-> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+> We realized developers struggling to develop small applications while trying to setup other language environment then their core development language. Our main objective is to let developers share their work with other developers who use other languages using rest API.
 
 # What's happening on inside?
 
