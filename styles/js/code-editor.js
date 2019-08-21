@@ -30,11 +30,11 @@ var jsbOptsEditorGo = {
 
 function formatCodeEditorGo() {
   var session = editor.getSession();
-  session.setValue(html_beautify(session.getValue(), jsbOptsEditorGo));
+  //session.setValue(html_beautify(session.getValue(), jsbOptsEditorGo)); // disabled for now
 }
 
 function formatCodeEditor() {
-  // node, java, py, go
+  // node, java, py
   var session = editor.getSession();
   var editorOpts =
     currentPlatform() === "php" ? jsbOptsEditorPhp : jsbOptsEditor;
