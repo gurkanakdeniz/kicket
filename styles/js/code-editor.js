@@ -24,16 +24,17 @@ var jsbOptsEditorPhp = {
 
 var jsbOptsEditorGo = {
   indent_size: 2,
-  templating: ["none"]
+  templating: ["none"],
+  indent_level: 1
 };
 
 function formatCodeEditorGo() {
   var session = editor.getSession();
-  session.setValue(html_beautify(session.getValue(), jsbOptsEditorGo));
+  //session.setValue(html_beautify(session.getValue(), jsbOptsEditorGo)); // disabled for now
 }
 
 function formatCodeEditor() {
-  // node, java, py, go
+  // node, java, py
   var session = editor.getSession();
   var editorOpts =
     currentPlatform() === "php" ? jsbOptsEditorPhp : jsbOptsEditor;
@@ -82,7 +83,14 @@ function formatCodeResponse() {
 $("#editor textarea").bind("paste", function(e) {
   let currentMode = editor.getSession().getMode().$id;
   currentMode = currentMode.substr(currentMode.lastIndexOf("/") + 1);
-  currentMode === "html" ? formatCodeEditorHTML() : formatCodeEditor();
+  console.log(currentMode);
+  if (currentMode === "html") {
+    formatCodeEditorHTML();
+  } else if (currentMode === "golang") {
+    formatCodeEditorGo();
+  } else {
+    formatCodeEditor();
+  }
 });
 
 $(".nav-tabs")
