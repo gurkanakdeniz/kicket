@@ -24,7 +24,8 @@ var jsbOptsEditorPhp = {
 
 var jsbOptsEditorGo = {
   indent_size: 2,
-  templating: ["none"]
+  templating: ["none"],
+  indent_level: 1
 };
 
 function formatCodeEditorGo() {
@@ -82,7 +83,14 @@ function formatCodeResponse() {
 $("#editor textarea").bind("paste", function(e) {
   let currentMode = editor.getSession().getMode().$id;
   currentMode = currentMode.substr(currentMode.lastIndexOf("/") + 1);
-  currentMode === "html" ? formatCodeEditorHTML() : formatCodeEditor();
+  console.log(currentMode);
+  if (currentMode === "html") {
+    formatCodeEditorHTML();
+  } else if (currentMode === "golang") {
+    formatCodeEditorGo();
+  } else {
+    formatCodeEditor();
+  }
 });
 
 $(".nav-tabs")
