@@ -33,6 +33,21 @@
   margin-bottom: 20px;
 }
 
+#view::-webkit-scrollbar {
+  width: 3px;
+}
+#view::-webkit-scrollbar-thumb {
+  background: #d8e4e6;
+  border-radius: 30px;
+}
+
+.hover-date {
+  font-size: 12px;
+  margin: 0;
+  opacity: 0;
+  transition: opacity 0.1s ease-in-out;
+}
+
 .hover-btn {
   opacity: 0;
   margin: 0 30px;
@@ -42,6 +57,11 @@
 }
 
 .uuid-hover:hover .hover-btn {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.uuid-hover:hover .hover-date {
   opacity: 1;
   transition: opacity 0.3s ease-in-out;
 }
