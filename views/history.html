@@ -1,5 +1,12 @@
 <div id="uuids">
-  <p id="expand" style="margin-bottom: 5px;">Quick Access History</p>
+  <p id="expand" style="margin-bottom: 5px;">
+    Quick Access History<i
+      class="fas fa-info-circle ml-2"
+      data-toggle="tooltip"
+      data-placement="right"
+      title="Temporary feature. In this process, we are developing registration system."
+    ></i>
+  </p>
   <p style="margin-bottom: 5px;">
     <i
       id="expand-icon"
@@ -16,12 +23,14 @@
             class="uuid-hover col-10"
             style="display: flex; line-height: 30px;"
           >
+            <p class="hover-date mr-3"><i>22.08 19:36</i></p>
             <i id="platform-icon" class="fab fa-node icon-size mr-5"></i>
-            <p id="api-url" class="m-0">
-              http://kicket.herokuapp.com/api/run/examplehashvalue
-            </p>
-            <button class="btn btn-outline-primary waves effect hover-btn">
-              <i class="fas fa-copy"></i>
+            <p id="line" class="m-0">http://kicket.herokuapp.com/api/run/</p>
+            <input id="line-" type="hidden" value="" /><button
+              class="btn btn-outline-primary waves effect hover-btn"
+              line=""
+            >
+              <i class="fas fa-file-import"></i>
             </button>
           </div>
           <div class="col-1"></div>
