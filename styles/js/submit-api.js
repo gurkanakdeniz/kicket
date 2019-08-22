@@ -18,6 +18,20 @@ $("#submitApi").click(function() {
         $("#basic-url").val(data.endpoint);
         goToByScroll("testapi");
       }, 2500);
+      var uuidList = [];
+      var apiObj = {
+        uuid: data.endpoint,
+        platform: body.platform
+      };
+      if (localStorage.getItem("uuids") === null) {
+        uuidList.unshift(apiObj);
+        localStorage.setItem("uuids", JSON.stringify(uuidList));
+      } else {
+        uuidList = JSON.parse(localStorage.getItem("uuids"));
+        uuidList.unshift(apiObj);
+        localStorage.setItem("uuids", JSON.stringify(uuidList));
+      }
+      history();
     },
     error: function(error) {
       deployLoadError();
