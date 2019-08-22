@@ -6,6 +6,9 @@ $(document).ready(function() {
     //$("#expand-icon").toggleClass("fa-angle-up");
   });
   history();
+  $(function() {
+    $('[data-toggle="tooltip"]').tooltip();
+  });
 });
 
 function history() {
@@ -13,7 +16,7 @@ function history() {
   let uuidHistoryObj = [];
   if (localStorage.getItem("uuids") === null) {
     $("#uuid-list-view").append(
-      '<div class="row"><div class="col-12 text-center"><p>Hmm... We think, humanity has not discovered this place.</p><i class="fas fa-dizzy" style="font-size: 40px;"></i></div></div>'
+      '<div class="row"><div class="col-12 text-center"><p>Hmm... We think, humanity has not discovered yet this place.</p><i class="fas fa-dizzy" style="font-size: 40px;"></i></div></div>'
     );
   } else {
     var count = 0;
@@ -25,7 +28,9 @@ function history() {
         el.platform = "gofore";
       }
       $("#uuid-list-view").append(
-        '<div class="row"><div class="col-1"></div><div class="uuid-hover col-10" style="display: flex; line-height: 30px;"><i id="platform-icon" class="fab fa-' +
+        '<div class="row"><div class="col-1"></div><div class="uuid-hover col-10" style="display: flex; line-height: 30px;"><p class="hover-date mr-3"><i>' +
+          el.date +
+          '</i></p><i id="platform-icon" class="fab fa-' +
           el.platform +
           ' icon-size mr-5"></i><p id="line" class="m-0">http://kicket.herokuapp.com/api/run/' +
           el.uuid +

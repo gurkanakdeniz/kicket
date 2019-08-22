@@ -21,7 +21,8 @@ $("#submitApi").click(function() {
       var uuidList = [];
       var apiObj = {
         uuid: data.endpoint,
-        platform: body.platform
+        platform: body.platform,
+        date: moment().format("DD/MM HH:mm")
       };
       if (localStorage.getItem("uuids") === null) {
         uuidList.unshift(apiObj);
