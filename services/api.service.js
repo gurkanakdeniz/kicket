@@ -40,7 +40,7 @@ exports.createCode = async function createCode(body, requestIp) {
   }
 };
 
-exports.runCode = async function runCode(uuid, body, ip) {
+exports.runPostCode = async function runPostCode(uuid, body, ip) {
   try {
     const result = await dbService.findUUID(uuid);
     let response = null;
@@ -63,6 +63,31 @@ exports.runCode = async function runCode(uuid, body, ip) {
           timeout: timeout
         });
       }
+
+      await dbService.updateModel(result, ip);
+    }
+    return response;
+  } catch (e) {
+    console.error(e);
+    throw e;
+  }
+};
+
+exports.runGetCode = async function runGetCode(uuid, ip) {
+  try {
+    const result = await dbService.findUUID(uuid);
+    let response = null;
+    if (result) {
+      let platform = result.platform;
+      let api = await runUtilityService.getApi(platform);
+      let header = await runUtilityService.getHeader(platform);
+
+      var timeout = await commonUtilityService.getTimeout();
+
+      response = await axios.get(api + uuid, null, {
+        headers: header,
+        timeout: timeout
+      });
 
       await dbService.updateModel(result, ip);
     }

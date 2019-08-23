@@ -16,8 +16,15 @@ function history() {
   let uuidHistoryObj = [];
   if (localStorage.getItem("uuids") === null) {
     $("#uuid-list-view").append(
-      '<div class="row"><div class="col-12 text-center"><p>Hmm... We think, humanity has not discovered yet this place.</p><i class="fas fa-dizzy" style="font-size: 40px;"></i></div></div>'
+      '<div class="row"><div class="col-12 text-center"><p>Hmm... We think, humanity has not discovered yet this place.</p><div id="wtf-face" style="width: 200px; margin: auto;"></div></div></div>'
     );
+    lottie.loadAnimation({
+      container: document.getElementById("wtf-face"),
+      renderer: "svg",
+      loop: true,
+      autoplay: true,
+      path: "../styles/json/wtf.json"
+    });
   } else {
     var count = 0;
     uuidHistoryObj = JSON.parse(localStorage.getItem("uuids"));
