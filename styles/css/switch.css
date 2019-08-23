@@ -9,10 +9,7 @@ h2 {
 }
 
 .mobile-view {
-  height: 100vh;
+  padding-top: 10px;
   vertical-align: middle;
   color: #d8e4e6;
-  line-height: 100vh;
-  display: grid;
-  align-items: center;
 }

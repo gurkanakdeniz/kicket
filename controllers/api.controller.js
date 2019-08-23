@@ -23,15 +23,15 @@ exports.createCode = async function(req, res, next) {
   }
 };
 
-exports.runCode = async function(req, res, next) {
+exports.runPostCode = async function(req, res, next) {
   try {
-    var response = await api.runCode(
+    var response = await api.runPostCode(
       req.params.uuid,
       req.body,
       requestIp.getClientIp(req).toString()
     );
     logger.doit(
-      "Running API with UUID: " +
+      "Running API[POST] with UUID: " +
         req.params.uuid +
         " ,Guest's IP: " +
         requestIp.getClientIp(req).toString()
@@ -55,7 +55,7 @@ exports.runGetCode = async function(req, res, next) {
       requestIp.getClientIp(req).toString()
     );
     logger.doit(
-      "Running API with UUID: " +
+      "Running API[GET] with UUID: " +
         req.params.uuid +
         " ,Guest's IP: " +
         requestIp.getClientIp(req).toString()
