@@ -40,7 +40,7 @@ exports.createCode = async function createCode(body, requestIp) {
   }
 };
 
-exports.runCode = async function runCode(uuid, body, ip) {
+exports.runPostCode = async function runPostCode(uuid, body, ip) {
   try {
     const result = await dbService.findUUID(uuid);
     let response = null;
