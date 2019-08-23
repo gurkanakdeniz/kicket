@@ -13,12 +13,9 @@ var favicon = require("serve-favicon");
 const kicketLogger = require("./utils/kicket.logger");
 dotenv.config();
 
-mongoose.connect(
-  process.env.MONGO,
-  {
-    useNewUrlParser: true
-  }
-);
+mongoose.connect(process.env.MONGO, {
+  useNewUrlParser: true
+});
 
 const indexRouter = require("./routes/index");
 const apiRouter = require("./routes/api");

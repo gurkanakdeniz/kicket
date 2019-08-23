@@ -39,8 +39,24 @@
         </div>
       </div>
       <div class="row">
+        <div class="col=12">
+          <div id="anim-lottie"></div>
+        </div>
+      </div>
+      <div class="row">
         <div class="col-12">
-          <h3>kicket may have some visual issue for mobile devices.</h3>
+          <h4>
+            <span style="color: #4285f4;">k</span>ic<span
+              style="color: #4285f4;"
+              >k</span
+            >et may have some visual issue for mobile devices.
+          </h4>
+          <h6>
+            <i
+              >We are working to make the best. In this process, if you want to
+              help us, just open pull request.</i
+            >
+          </h6>
           <button
             type="button"
             class="btn btn-secondary waves-effect waves-light"
@@ -73,7 +89,15 @@
     type="text/javascript"
     src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/js/mdb.min.js"
   ></script>
+  <script type="text/javascript" src="../styles/js/lottie.js"></script>
   <script type="text/javascript">
+    lottie.loadAnimation({
+      container: document.getElementById("anim-lottie"),
+      renderer: "svg",
+      loop: true,
+      autoplay: true,
+      path: "../styles/json/construction.json"
+    });
     function mobileEntrance() {
       window.location.href = window.location.href + "mobilentrance";
     }

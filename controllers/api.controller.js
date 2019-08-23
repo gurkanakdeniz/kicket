@@ -23,15 +23,39 @@ exports.createCode = async function(req, res, next) {
   }
 };
 
-exports.runCode = async function(req, res, next) {
+exports.runPostCode = async function(req, res, next) {
   try {
-    var response = await api.runCode(
+    var response = await api.runPostCode(
       req.params.uuid,
       req.body,
       requestIp.getClientIp(req).toString()
     );
     logger.doit(
-      "Running API with UUID: " +
+      "Running API[POST] with UUID: " +
+        req.params.uuid +
+        " ,Guest's IP: " +
+        requestIp.getClientIp(req).toString()
+    );
+    return res.status(200).send(response.data);
+  } catch (e) {
+    logger.doit(
+      "Something went wrong for guest's IP: " +
+        requestIp.getClientIp(req).toString() +
+        " ,Error Message: " +
+        e.message
+    );
+    return res.status(500).json({ message: e.message });
+  }
+};
+
+exports.runGetCode = async function(req, res, next) {
+  try {
+    var response = await api.runGetCode(
+      req.params.uuid,
+      requestIp.getClientIp(req).toString()
+    );
+    logger.doit(
+      "Running API[GET] with UUID: " +
         req.params.uuid +
         " ,Guest's IP: " +
         requestIp.getClientIp(req).toString()
